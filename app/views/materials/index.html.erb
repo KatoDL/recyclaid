@@ -1,0 +1,7 @@
+<h1>all available materials</h1>
+<% @materials.each do |material| %>
+  <h3><%= material.name %></h3>
+  <p><%= material.description %></p>
+  <p>address: <%= material.location %></p>
+  <p>price: <%= material.price %></p>
+<% end %>

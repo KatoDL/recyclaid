@@ -6,9 +6,8 @@ class User < ApplicationRecord
   has_many :materials, dependent: :destroy
   has_many :buyings
   has_many :messages, dependent: :destroy
-  has_many :reviews_as_reviewee, class_name: "Review", foreign_key: :rewiewee_id, dependent: :destroy
+  has_many :reviews_as_reviewee, class_name: "Review", foreign_key: :reviewee_id, dependent: :destroy
   has_many :reviews_as_reviewer, class_name: "Review", foreign_key: :reviewer_id, dependent: :destroy
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :email, presence: true
 end
