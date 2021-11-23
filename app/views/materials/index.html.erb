@@ -21,7 +21,7 @@
       </div>
       <div class="card-index-infos">
         <div class="name-description">
-          <h3><%= material.name %></h3>
+          <h3><%= link_to material.name, material_path(material) %></h3>
           <p><%= material.description %></p>
         </div>
         <div class="icons">
