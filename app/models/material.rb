@@ -1,6 +1,7 @@
 class Material < ApplicationRecord
   belongs_to :user
   has_many :buyings
+  has_many_attached :photos
 
   validates :description, presence: true
   validates :description, length: { minimum: 6 }
