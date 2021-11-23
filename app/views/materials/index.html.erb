@@ -1,9 +1,25 @@
 <h1>all available materials</h1>
 <div class="cards-container-index">
   <% @materials.each do |material| %>
-    <h3><%= material.name %></h3>
-    <p><%= material.description %></p>
-    <p>address: <%= material.location %></p>
-    <p>price: <%= material.price %></p>
+  <%# <hr> %>
+    <div class="card-container-index">
+      <div class="card-index-images">
+        <% if material.photos.attached? %>
+          <% material.photos.each do |photo| %>
+            <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-index-infos">
+        <div class="name-description">
+          <h3><%= material.name %></h3>
+          <p><%= material.description %></p>
+        </div>
+        <div class="icons">
+          <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+          <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
