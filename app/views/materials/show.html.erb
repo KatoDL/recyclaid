@@ -10,4 +10,5 @@
   <p><%= @material.description %></p>
   <p><%= @material.location %></p>
   <p><%= @material.price %>euros</p>
+  <p><%= link_to @material.user.name, user_path(user) %></p>
 </div>
