@@ -1,5 +1,4 @@
-<h1>all available materials</h1>
-<div class='search-bar-container'>
+<div class='search-bar-container m-2 ml-3'>
   <%= form_tag materials_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
@@ -26,8 +25,8 @@
           <p><%= material.description %></p>
         </div>
         <div class="icons">
-          <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
           <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+          <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
         </div>
       </div>
     </div>
