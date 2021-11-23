@@ -1,0 +1,23 @@
+.cards-container-index {
+  margin-left: 15px;
+  width: 50%;
+}
+
+.card-container-index {
+  // background-color: $light-green;
+  display: flex;
+  // justify-content: space-around;
+  // padding-left: 10px;
+  box-shadow: 1px 2px 5px 2px lightgray;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.card-index-infos {
+  padding: 10px;
+  // padding-top: 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

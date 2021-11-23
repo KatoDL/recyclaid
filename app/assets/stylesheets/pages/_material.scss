@@ -13,4 +13,8 @@ ul {
   background-size: cover;
   height: 250px;
   width: 350px;
+  object-fit: cover;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  // border-radius: 4px;
 }
