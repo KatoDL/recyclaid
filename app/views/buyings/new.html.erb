@@ -1,0 +1,4 @@
+<p> Do you want to buy <%= @material.name %> from <%= @material.user.email %>? Send a request :</p>
+<%= simple_form_for([@material, @buying]) do |f| %>
+  <%= f.input :message %>
+<% end %>

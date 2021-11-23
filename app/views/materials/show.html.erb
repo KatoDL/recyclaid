@@ -10,4 +10,6 @@
   <p><%= @material.description %></p>
   <p><%= @material.location %></p>
   <p><%= @material.price %>euros</p>
+  <br>
+  <%= link_to "Send a request to buy", new_material_buying_path(@material) %>
 </div>
