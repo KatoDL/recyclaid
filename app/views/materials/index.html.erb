@@ -11,7 +11,7 @@
 </div>
 <div class="index-materials-container">
     <% @materials.each do |material| %>
-      <h3><%= material.name %></h3>
+      <h3><%= link_to material.name, material_path(material) %></h3>
       <p><%= material.description %></p>
       <p>address: <%= material.location %></p>
       <p>price: <%= material.price %></p>
