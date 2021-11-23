@@ -1,0 +1,13 @@
+<div class='material-container'>
+  <h2><%= @material.name %></h2>
+  <ul class='material-photos-list'>
+    <% if @material.photos.attached? %>
+      <% @material.photos.each do |photo| %>
+        <li><div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <p><%= @material.description %></p>
+  <p><%= @material.location %></p>
+  <p><%= @material.price %>euros</p>
+</div>
