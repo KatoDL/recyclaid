@@ -1,6 +1,16 @@
 class MaterialsController < ApplicationController
   def index
     @materials = Material.all
+    if params[:query].present?
+      sql_query = " \
+        materials.name @@ :query \
+        OR materials.description @@ :query \
+        OR materials.location @@ :query \
+      "
+      @materials = Material.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @materials = Material.all
+    end
   end
 
   def show
