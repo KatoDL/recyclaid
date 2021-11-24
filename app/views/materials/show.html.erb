@@ -11,4 +11,11 @@
   <p><%= @material.location %></p>
   <p><%= @material.price %>euros</p>
   <p><%= link_to @material.user.name, user_path(@material.user_id) %></p>
+  <br>
+
+  <%= simple_form_for [@material, @buying] do |f| %>
+    <%= f.input :message %>
+    <%= f.hidden_field :status, value: "pending" %>
+    <%= f.submit %>
+  <% end %>
 </div>
