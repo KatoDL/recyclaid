@@ -6,3 +6,26 @@
   <% end %>
 </div>
 <h1><%= @user.name %></h1>
+
+<h2>Pending requests :</h2>
+<div class="cards-container-index">
+  <% @buyings.each do |buying| %>
+  <%# <hr> %>
+    <div class="card-container-index">
+      <div class="card-index-images">
+        <% if buying.material.photos.attached? %>
+          <% buying.material.photos.each do |photo| %>
+            <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-index-infos">
+        <div class="name-description">
+          <p>Product name : <%= buying.material.name %></p>
+          <p>Your message : <%= buying.message %></p>
+          <p>Buying request status : <%= buying.status %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

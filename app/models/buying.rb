@@ -4,5 +4,5 @@ class Buying < ApplicationRecord
   has_many :messages
 
   validates :message, presence: true
-  validates :status, presence: true, default: false
+  validates :status, presence: true
 end
