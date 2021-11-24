@@ -25,6 +25,12 @@ class MaterialsController < ApplicationController
     end
   end
 
+  def destroy
+    @material = Material.find(params[:id])
+    @material.destroy
+    redirect_to dashboard_path
+  end
+
   private
 
   def material_params
