@@ -1,2 +1,9 @@
 <h1>This is <%= @user.name %>'s profile</h1>
-  <h2>"<%= @user.description %>"</h2>
+<h2>"<%= @user.description %>"</h2>
+<div class="profilepicture">
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: "imgprofile" %>
+  <% else %>
+    <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "imgprofile" %>
+  <% end %>
+</div>
