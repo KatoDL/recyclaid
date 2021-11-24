@@ -13,4 +13,9 @@
   <p><%= link_to @material.user.name, user_path(@material.user_id) %></p>
   <br>
   <%= link_to "Send a request to buy", new_material_buying_path(@material) %>
+
+  <%= simple_form_for [@material, @buying] do |f| %>
+    <%= f.input :message %>
+    <%= f.hidden_field :status, value: false %>
+  <% end %>
 </div>
