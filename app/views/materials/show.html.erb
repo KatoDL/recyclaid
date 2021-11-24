@@ -17,5 +17,6 @@
   <%= simple_form_for [@material, @buying] do |f| %>
     <%= f.input :message %>
     <%= f.hidden_field :status, value: false %>
+    <%= f.submit %>
   <% end %>
 </div>

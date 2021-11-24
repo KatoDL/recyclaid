@@ -9,17 +9,14 @@ class BuyingsController < ApplicationController
     @material = Material.find(params[:material_id])
     @buying = Buying.new(buying_params)
     @buying.material = @material
-
-    if @buying.save
-      redirect_to material_path
-    else
-      render :new
-    end
+    @buying.user = current_user
+    @buying.save!
+    redirect_to material_path(@material)
   end
 
   private
 
   def buying_params
-    params.require(:buying).permit(:message)
+    params.require(:buying).permit(:message, :status)
   end
 end
