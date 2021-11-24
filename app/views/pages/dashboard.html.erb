@@ -1,0 +1,8 @@
+<div class="profilepicture">
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, class: "imgprofile" %>
+  <% else %>
+    <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "imgprofile" %>
+  <% end %>
+</div>
+<h1><%= @user.name %></h1>
