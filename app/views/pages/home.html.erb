@@ -1,3 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to 'find a material', materials_path %>
+<div class="container-home">
+  <%# <div class="top">
+  </div> %>
+  <div class="full">
+    <div class="infos button">
+      <h2>Don't be trashy, reuse building materials!</h2>
+      <%= link_to 'find materials', materials_path %>
+    </div>
+    <div class="infos button">
+      <h2>Do you have some materials left over yourself? Don't hesitate to offer them!</h2>
+      <%= link_to 'share my materials', new_material_path %>
+    </div>
+  </div>
+</div>
