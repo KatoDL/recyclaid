@@ -1,9 +1,38 @@
-<h1>This is <%= @user.name %>'s profile</h1>
-<h2>"<%= @user.description %>"</h2>
-<div class="profilepicture">
-  <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, class: "imgprofile" %>
-  <% else %>
-    <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "imgprofile" %>
-  <% end %>
+<div class="general-container">
+  <div class="info-container">
+    <div class="profilepicture">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "imgprofile" %>
+      <% else %>
+        <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "imgprofile" %>
+      <% end %>
+    </div>
+    <h1><%= @user.name %></h1>
+    <h2>"<%= @user.description %>"</h2>
+  </div>
+  <div class="itemsforsale">
+    <h3>Items for sale</h3>
+    <hr>
+    <% @user.materials.each do |material| %>
+      <div class="card-container-index">
+        <div class="card-index-images">
+          <% if material.photos.attached? %>
+            <% material.photos.each do |photo| %>
+              <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-index-infos">
+          <div class="name-description">
+            <h3><%= link_to material.name, material_path(material) %></h3>
+            <p><%= material.description %></p>
+          </div>
+          <div class="icons">
+            <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+            <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
