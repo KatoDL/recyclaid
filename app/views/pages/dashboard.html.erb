@@ -39,7 +39,6 @@
 <h5>Interests</h5>
 <div class="cards-container-index">
   <% @buyings.each do |buying| %>
-  <%# <hr> %>
     <div class="card-container-index">
       <div class="card-index-images">
         <% if buying.material.photos.attached? %>
@@ -50,8 +49,7 @@
       </div>
       <div class="card-index-infos">
         <div class="name-description">
-          <p>Product name : <%= buying.material.name %></p>
-          <p>Your message : <%= buying.message %></p>
+          <p>Product name : <%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></p>
           <p>Buying request status : <%= buying.status %></p>
         </div>
       </div>
@@ -59,3 +57,22 @@
   <% end %>
 </div>
 <h5>Sales to be confirmed</h5>
+<div class="cards-container-index">
+  <% @buyings_of_your_materials.each do |buying| %>
+    <div class="card-container-index">
+      <div class="card-index-images">
+        <% if buying.material.photos.attached? %>
+          <% buying.material.photos.each do |photo| %>
+            <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-index-infos">
+        <div class="name-description">
+          <p>Product name : <%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></p>
+          <p>Buying request status : <%= buying.status %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
