@@ -10,3 +10,35 @@
   <p>Your message : <%= @buying.message %></p>
   <p>Buying request status : <%= @buying.status %></p>
 </div>
+
+<p id="notice"><%= notice %></p>
+
+<hr>
+<div class="card my-1">
+  <div class="card-body">
+    <p class="font-weight-bold">Messages</p>
+    <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New message' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<%= render @buying.messages %>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"><%= @buying.user.name %></h5>
+        <p class="card-text"><%= truncate(@buying.message) %></p>
+    </div>
+</div>
+<div class='button'><%= link_to 'New message', new_buying_message_path(@buying, @message) %></div>
+<% @messages.each do |message| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= message.user.name %></h5>
+      <p class="card-text"><%= truncate(message.content, length: 60) %></p>
+    </div>
+  </div>
+<% end %>
