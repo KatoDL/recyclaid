@@ -1,8 +1,16 @@
 class MaterialsController < ApplicationController
   def index
     @materials = Material.all
+
     if params[:query].present?
       @materials = Material.search_by_name_and_description_and_location(params[:query])
+    end
+
+    @markers = @materials.geocoded.map do |material|
+      {
+        lat: material.latitude,
+        lng: material.longitude
+      }
     end
   end
 
