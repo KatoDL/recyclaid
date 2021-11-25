@@ -1,34 +1,45 @@
-<div class='search-bar-container m-2 ml-3'>
-  <%= form_tag materials_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a material"
-    %>
-    <%# <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-</div>
-<div class="cards-container-index">
-  <% @materials.each do |material| %>
-  <%# <hr> %>
-    <div class="card-container-index">
-      <div class="card-index-images">
-        <% if material.photos.attached? %>
-          <% material.photos.each do |photo| %>
-            <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="card-index-infos">
-        <div class="name-description">
-          <h3><%= link_to material.name, material_path(material) %></h3>
-          <p><%= material.description %></p>
-        </div>
-        <div class="icons">
-          <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
-          <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
-        </div>
-      </div>
+<div class="index-page">
+  <div class="left">
+    <div class='search-bar-container m-2 ml-3'>
+      <%= form_tag materials_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a material"
+        %>
+        <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
     </div>
-  <% end %>
+    <div class="cards-container-index">
+      <% @materials.each do |material| %>
+      <%# <hr> %>
+        <div class="card-container-index">
+          <div class="card-index-images">
+            <% if material.photos.attached? %>
+              <% material.photos.each do |photo| %>
+                <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-index-infos">
+            <div class="name-description">
+              <h3><%= link_to material.name, material_path(material) %></h3>
+              <p><%= material.description %></p>
+            </div>
+            <div class="icons">
+              <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+              <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="right">
+    <div id="map"
+     style="width: 800px; height: 900px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
