@@ -9,7 +9,8 @@ class MaterialsController < ApplicationController
     @markers = @materials.geocoded.map do |material|
       {
         lat: material.latitude,
-        lng: material.longitude
+        lng: material.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { material: material })
       }
     end
   end
