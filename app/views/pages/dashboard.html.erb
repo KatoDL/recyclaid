@@ -50,8 +50,7 @@
       </div>
       <div class="card-index-infos">
         <div class="name-description">
-          <p>Product name : <%= buying.material.name %></p>
-          <p>Your message : <%= buying.message %></p>
+          <p>Product name : <%= link_to "#{buying.material.name}", buying_path(buying) %></p>
           <p>Buying request status : <%= buying.status %></p>
         </div>
       </div>
