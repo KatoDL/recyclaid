@@ -1,40 +1,44 @@
-<div>
-  <% if @buying.material.photos.attached? %>
-    <% @buying.material.photos.each do |photo| %>
-      <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <p>Product name : <%= @buying.material.name %></p>
-  <p>Buying request status : <%= @buying.status %></p>
-</div>
-<hr>
-<div id="message-box">
-  <div class="card">
-      <div class="card-body">
-          <h5 class="card-title"><%= @buying.user.name %></h5>
-          <p class="card-text"><%= truncate(@buying.message) %></p>
+<div class="center-buying-container">
+  <div class='buying-messages-container'>
+    <div class ="buying-container">
+      <div>
+        <% if @buying.material.photos.attached? %>
+          <% @buying.material.photos.each do |photo| %>
+            <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+          <% end %>
+        <% end %>
       </div>
-  </div>
-  <% @messages.each do |message| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= message.user.name %></h5>
-        <p class="card-text"><%= truncate(message.content, length: 60) %></p>
+      <div>
+        <p>Product name : <%= @buying.material.name %></p>
+        <p>Buying request status : <%= @buying.status %></p>
       </div>
     </div>
-  <% end %>
-</div>
-<div class="card my-1">
-  <div class="card-body">
-    <p class="font-weight-bold">Messages</p>
-    <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
-      <div class="form-group">
-        <%= f.label 'New message' %>
-        <%= f.text_area :content, class: 'form-control' %>
+    <div id="message-box" class = "message-box-container">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title"><%= @buying.user.name %></h5>
+              <p class="card-text"><%= truncate(@buying.message) %></p>
+          </div>
       </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-    <% end %>
+      <% @messages.each do |message| %>
+        <div class="card" id="message_<%= message.id%>">
+          <div class="card-body">
+            <h5 class="card-title"><%= message.user.name %></h5>
+            <p class="card-text"><%= truncate(message.content, length: 60) %></p>
+          </div>
+        </div>
+      <% end %>
+      <div class="card my-1">
+        <div class="card-body">
+          <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
+            <div class="form-group">
+              <%= f.label 'New message' %>
+              <%= f.text_area :content, class: 'form-control' %>
+            </div>
+            <div class ='button-green'><%= f.submit 'Submit' %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
