@@ -22,6 +22,16 @@ class BuyingsController < ApplicationController
     end
   end
 
+  def update
+    @buying = Buying.find(params[:id])
+    @buying.update(buying_params)
+    @material = @buying.material
+    @material.available = false if @buying.status == "confirmed"
+    @material.save
+
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_material
