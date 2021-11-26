@@ -10,3 +10,17 @@
     opacity: 1;
   }
 }
+
+input[type=submit] {
+  background-color: $dark-green;
+  color: $beige;
+  opacity: 0.7;
+  padding: 7px;
+  border: 2px solid $beige;
+  margin-top: 2px;
+  // border-radius: 4px;
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
