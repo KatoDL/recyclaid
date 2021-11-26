@@ -10,3 +10,13 @@
     opacity: 1;
   }
 }
+
+::-webkit-file-upload-button {
+  height: 40px;
+  width: 50%;
+  color: $beige;
+  background-color: $dark-green;
+  border: 2px solid $beige;
+  border-radius: 4px;
+  margin-right: 20px;
+}

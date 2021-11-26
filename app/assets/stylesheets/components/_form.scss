@@ -1,0 +1,51 @@
+.form {
+  width: 500px;
+  background-color: $dark-green;
+  padding: 40px;
+  margin: 60px auto;
+  opacity: 0.8;
+  border-radius: 6px;
+  color: $beige;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 5%)
+}
+
+.form_title {
+  font-size: 26px;
+  text-align: center;
+}
+
+.form_img {
+  width: 420px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.input_text {
+  background-color: $dark-green;
+  color: $beige;
+  border: none;
+  border-bottom: 2px solid $beige;
+}
+
+.input_text:focus {
+  background-color: $dark-green;
+  color: $beige;
+  box-shadow: none;
+  border-bottom: 3px solid $beige;
+}
+
+.input_text::placeholder {
+  color: $beige;
+  opacity: 0.4;
+}
+
+.submit_button {
+  height: 40px;
+  width: 100%;
+  color: $dark-green;
+  background-color: $beige;
+  border: 2px solid $beige;
+  border-radius: 4px;
+}

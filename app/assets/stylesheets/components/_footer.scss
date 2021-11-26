@@ -5,6 +5,7 @@
   justify-content: space-between;
   height: 80px;
   padding: 0px 50px;
+  // margin-top: 40px;
   color: $dark-green;
 }
 .footer-links {
@@ -20,7 +21,4 @@
 }
 .footer-links a:hover {
   opacity: 1;
-}
-.footer .fa-poo {
-  color: rgb(110,62,22);
 }
