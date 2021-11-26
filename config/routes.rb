@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   end
   resources :buyings, only: :update
   resources :users, only: [:show]
+  resources :buyings, only: [:destroy] do
+    resources :messages, only: [:new, :create]
+  end
 end

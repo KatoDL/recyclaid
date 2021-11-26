@@ -3,6 +3,8 @@ class BuyingsController < ApplicationController
 
   def show
     @buying = Buying.find(params[:id])
+    @message = Message.where(user: @user)
+    @messages = Message.all.select { |m| m.buying_id == @buying.id }
   end
 
   def new

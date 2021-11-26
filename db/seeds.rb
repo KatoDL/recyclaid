@@ -12,7 +12,7 @@ User.destroy_all
 
 puts "Creating materials..."
 user1 = User.create!({ email: "Quynh-Anh@lewagon.be", password: "recyclaid", name: "Quynh-Anh", description: "My windows are the best, don't even consider buying from someone else." })
-user2 = User.create!({ email: "kato@lewagon.be", password: "recylaid", name: "Kato", description: "The wood I provide is always fresh from the day, I chop it myself :)" })
+user2 = User.create!({ email: "kato@lewagon.be", password: "recyclaid", name: "Kato", description: "The wood I provide is always fresh from the day, I chop it myself :)" })
 user3 = User.create!({ email: "dorian@lewagon.be", password: "recyclaid", name: "Dorian", description: "I am a true sand lover !" })
 
 photo1 = 'https://images.pexels.com/photos/923167/pexels-photo-923167.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
