@@ -20,6 +20,13 @@ class BuyingsController < ApplicationController
     end
   end
 
+  def update
+    @buying = Buying.find(params[:id])
+    @buying.update(buying_params)
+
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_material

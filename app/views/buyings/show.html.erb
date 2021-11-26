@@ -10,3 +10,14 @@
   <p>Your message : <%= @buying.message %></p>
   <p>Buying request status : <%= @buying.status %></p>
 </div>
+<% if @buying.material.user == current_user %>
+  <%= simple_form_for @buying do |f| %>
+    <%= f.hidden_field :status, value: "confirmed" %>
+    <%= f.submit "confirm", class: "btn btn-success" %>
+  <% end %>
+
+  <%= simple_form_for @buying do |f| %>
+    <%= f.hidden_field :status, value: "declined" %>
+    <%= f.submit "decline", class: "btn btn-success" %>
+  <% end %>
+<% end %>

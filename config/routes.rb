@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :materials do
     resources :buyings, only: [:show, :new, :create]
   end
+  resources :buyings, only: :update
   resources :users, only: [:show]
 end
