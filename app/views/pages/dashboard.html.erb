@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <h1><%= @user.name %></h1>
-<h2>"<%= @user.description %>"</h2>
+<em><h5>"<%= @user.description %>"</h5></em>
 <h5>Your items</h5>
 <div class="cards-container-index">
   <% @user.materials.each do |material| %>
