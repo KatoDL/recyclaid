@@ -15,7 +15,17 @@
           <% if buying.user == current_user %>
             <%= simple_form_for [ @user, @review ] do |f| %>
               <%= f.input :rating %>
-              <%= f.submit "Send review", class: "btn btn-primary" %>
+              <%= f.submit "Send review" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% current_user.materials.each do |material| %>
+        <% material.buyings.each do |buying| %>
+          <% if buying.user == @user %>
+            <%= simple_form_for [ @user, @review ] do |f| %>
+              <%= f.input :rating %>
+              <%= f.submit "Send review" %>
             <% end %>
           <% end %>
         <% end %>
@@ -76,6 +86,7 @@
               <div class="icons">
                 <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
                 <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+                <p><strong>This item is already sold!</strong></p>
               </div>
             </div>
           </div>
