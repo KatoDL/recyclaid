@@ -9,6 +9,23 @@
     </div>
     <h1><%= @user.name %></h1>
     <h4>"<%= @user.description %>"</h4>
+    <div class="review">
+      <% @user.materials.each do |material| %>
+        <% material.buyings.each do |buying| %>
+          <% if buying.user == current_user %>
+            <%= simple_form_for [ @user, @review ] do |f| %>
+              <%= f.input :rating %>
+              <%= f.submit "Send review", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <ul class="list-group">
+        <% @user.reviews_as_reviewee.each do |review| %>
+          <li class="list-group-items"><%= review.rating %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div class="profilecontent">
     <div class="itemsforsale">
