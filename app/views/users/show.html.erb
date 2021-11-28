@@ -32,7 +32,7 @@
       <% end %>
       <ul class="list-group">
         <% @user.reviews_as_reviewee.each do |review| %>
-          <li class="list-group-items"><%= review.rating %></li>
+          <li class="list-group-items"><%= review.rating %> -<em><%= review.reviewer.name %></em></li>
         <% end %>
       </ul>
     </div>
