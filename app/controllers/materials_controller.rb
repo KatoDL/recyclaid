@@ -19,6 +19,7 @@ class MaterialsController < ApplicationController
   def show
     @material = Material.find(params[:id])
     @buying = Buying.new
+    @buyings = @material.buyings
   end
 
   def new
