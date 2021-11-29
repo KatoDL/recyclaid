@@ -22,3 +22,8 @@
   border-radius: 50%;
   border: 2px solid $beige;
 }
+
+.profilecontent {
+  display: flex;
+  flex-direction: column;
+}
