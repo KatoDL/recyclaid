@@ -17,14 +17,14 @@
       <div class="card">
           <div class="card-body">
               <h5 class="card-title"><%= @buying.user.name %></h5>
-              <p class="card-text"><%= truncate(@buying.message) %></p>
+              <p class="card-text"><%= @buying.message %></p>
           </div>
       </div>
       <% @messages.each do |message| %>
         <div class="card" id="message_<%= message.id%>">
           <div class="card-body">
             <h5 class="card-title"><%= message.user.name %></h5>
-            <p class="card-text"><%= truncate(message.content, length: 60) %></p>
+            <p class="card-text"><%= message.content %></p>
           </div>
         </div>
       <% end %>
