@@ -11,59 +11,63 @@
     <h4>"<%= @user.description %>"</h4>
   </div>
   <div class="profilecontent">
-    <div class="itemsforsale">
-      <h3>Items for sale</h3>
-      <hr>
-      <% @user.materials.each do |material| %>
-        <% if material.available %>
-          <div class="card-container-index">
-            <div class="card-index-images">
-              <% if material.photos.attached? %>
-                <% material.photos.each do |photo| %>
-                  <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+    <% unless @user.materials.where(available: true).empty? %>
+      <div class="itemsforsale">
+        <h3>Items for sale</h3>
+        <hr>
+        <% @user.materials.each do |material| %>
+          <% if material.available %>
+            <div class="card-container-index">
+              <div class="card-index-images">
+                <% if material.photos.attached? %>
+                  <% material.photos.each do |photo| %>
+                    <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="card-index-infos">
-              <div class="name-description">
-                <h3><%= link_to material.name, material_path(material) %></h3>
-                <p><%= material.description %></p>
               </div>
-              <div class="icons">
-                <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
-                <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+              <div class="card-index-infos">
+                <div class="name-description">
+                  <h3><%= link_to material.name, material_path(material) %></h3>
+                  <p><%= material.description %></p>
+                </div>
+                <div class="icons">
+                  <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <div class="solditems">
-      <h3>Sold items</h3>
-      <hr>
-      <% @user.materials.each do |material| %>
-        <% if !material.available %>
-          <div class="card-container-index">
-            <div class="card-index-images">
-              <% if material.photos.attached? %>
-                <% material.photos.each do |photo| %>
-                  <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="card-index-infos">
-              <div class="name-description">
-                <h3><%= link_to material.name, material_path(material) %></h3>
-                <p><%= material.description %></p>
+      </div>
+    <% end %>
+    <% unless @user.materials.where(available: false).empty? %>
+      <div class="solditems">
+          <h3>Sold items</h3>
+          <hr>
+          <% @user.materials.each do |material| %>
+            <% if !material.available %>
+              <div class="card-container-index">
+                <div class="card-index-images">
+                  <% if material.photos.attached? %>
+                    <% material.photos.each do |photo| %>
+                      <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="card-index-infos">
+                  <div class="name-description">
+                    <h3><%= link_to material.name, material_path(material) %></h3>
+                    <p><%= material.description %></p>
+                  </div>
+                  <div class="icons">
+                    <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+                  </div>
+                </div>
               </div>
-              <div class="icons">
-                <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
-                <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+            <% end %>
+          <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
