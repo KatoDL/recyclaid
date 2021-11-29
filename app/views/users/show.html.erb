@@ -12,20 +12,23 @@
     <div class="review">
       <% @user.materials.each do |material| %>
         <% material.buyings.each do |buying| %>
-          <% if buying.user == current_user %>
-            <%= simple_form_for [ @user, @review ] do |f| %>
-              <%= f.input :rating %>
-              <%= f.submit "Send review" %>
+          <% if buying.user == current_user && @form_seller %>
+            <% @form_seller = false %>
+            <%= simple_form_for [ @user, @review ], defaults: { input_html: { class: 'star-review review-form' } } do |f| %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Rate this seller" %>
+              <%= f.submit "Send review", class: "d-none" %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
       <% current_user.materials.each do |material| %>
         <% material.buyings.each do |buying| %>
-          <% if buying.user == @user %>
-            <%= simple_form_for [ @user, @review ] do |f| %>
-              <%= f.input :rating %>
-              <%= f.submit "Send review" %>
+          <% if buying.user == @user && @form_buyer %>
+          <% @form_buyer = false %>
+            <%= simple_form_for [ @user, @review ], defaults: { input_html: { class: 'star-review' } } do |f| %>
+              <p>rate this buyer:</p>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Rate this buyer" %>
+              <%= f.submit "Send review", class: "d-none" %>
             <% end %>
           <% end %>
         <% end %>
