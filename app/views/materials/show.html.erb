@@ -22,7 +22,7 @@
     <p>Contact <%= @material.user.name %></p>
     <%= simple_form_for [@material, @buying] do |f| %>
       <%= f.input :message, label: false %>
-      <%= f.hidden_field :status, value: "pending" %>
+      <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
       <%= f.submit %>
     <% end %>
   </div>
