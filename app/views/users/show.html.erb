@@ -9,6 +9,44 @@
     </div>
     <h1><%= @user.name %></h1>
     <h4>"<%= @user.description %>"</h4>
+    <div class="review">
+      <% @user.materials.each do |material| %>
+        <% material.buyings.each do |buying| %>
+          <% if buying.user == current_user && @form_seller %>
+            <% @form_seller = false %>
+            <%= simple_form_for [ @user, @review ], defaults: { input_html: { class: 'star-review review-form' } } do |f| %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Rate this seller" %>
+              <%= f.submit "Send review", class: "d-none" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% current_user.materials.each do |material| %>
+        <% material.buyings.each do |buying| %>
+          <% if buying.user == @user && @form_buyer %>
+          <% @form_buyer = false %>
+            <%= simple_form_for [ @user, @review ], defaults: { input_html: { class: 'star-review' } } do |f| %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "Rate this buyer" %>
+              <%= f.submit "Send review", class: "d-none" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <ul class="list-group">
+        <% @user.reviews_as_reviewee.each do |review| %>
+          <div class="review-show">
+            <div class="review-name">
+              <li class="list-group-items"><em><%= review.reviewer.name %></em>: </li>
+            </div>
+            <div class="stars-list">
+              <% review.rating.times do %>
+                <li class="list-group-items"><i class="fas fa-star"></i></li>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div class="profilecontent">
     <div class="itemsforsale">
@@ -59,6 +97,7 @@
               <div class="icons">
                 <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
                 <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+                <p><strong>This item is already sold!</strong></p>
               </div>
             </div>
           </div>

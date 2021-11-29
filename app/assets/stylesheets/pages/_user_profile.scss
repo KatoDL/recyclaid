@@ -1,6 +1,6 @@
 .general-container {
   display: flex;
-  padding-top: 80px;
+  // padding-top: 80px;
 }
 
 .info-container {
@@ -8,6 +8,7 @@
   height: 500px;
   padding-top: 20px;
   text-align: center;
+  margin-bottom: 120px;
   // background-color: aquamarine;
 }
 
@@ -26,4 +27,26 @@
 .profilecontent {
   display: flex;
   flex-direction: column;
+}
+
+.review_rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-star {
+  // display: flex;
+  color: rgb(255,207,3);
+}
+
+.stars-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-show {
+  display: flex;
 }
