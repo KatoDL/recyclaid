@@ -18,7 +18,16 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
+    # @available_materials = @materials.where(available: true)
     @buying = Buying.new
+
+    # @markers = @available_materials.geocoded.map do |material|
+    #   {
+    #     lat: material.latitude,
+    #     lng: material.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: { material: material })
+    #   }
+    # end
   end
 
   def new
