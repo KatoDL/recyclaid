@@ -1,55 +1,61 @@
 <div class="center-buying-container">
+  <h2><%= @buying.material.name %></h2>
   <div class='buying-messages-container'>
     <div class ="buying-container">
-      <div>
+      <p class='buying-status-highlight'><%= @buying.status %></p>
+      <div class="buying-validation-buttons">
+        <% if @buying.material.user == current_user %>
+          <%= simple_form_for @buying do |f| %>
+            <%= f.hidden_field :status, value: "confirmed" %>
+            <%= f.submit "confirm", class: "button-green" %>
+          <% end %>
+          <%= simple_form_for @buying do |f| %>
+            <%= f.hidden_field :status, value: "declined" %>
+            <%= f.submit "decline", class: "button-green" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="buying-img">
         <% if @buying.material.photos.attached? %>
           <% @buying.material.photos.each do |photo| %>
             <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
           <% end %>
         <% end %>
       </div>
-      <div>
-        <p>Product name : <%= @buying.material.name %></p>
-        <p>Buying request status : <%= @buying.status %></p>
-      </div>
+      <p>Product description : <%= @buying.material.description  %></p>
     </div>
-    <div id="message-box" class = "message-box-container">
-      <div class="card">
-          <div class="card-body">
-              <h5 class="card-title"><%= @buying.user.name %></h5>
-              <p class="card-text"><%= @buying.message %></p>
-          </div>
-      </div>
-      <% @messages.each do |message| %>
-        <div class="card" id="message_<%= message.id%>">
-          <div class="card-body">
-            <h5 class="card-title"><%= message.user.name %></h5>
-            <p class="card-text"><%= message.content %></p>
-          </div>
-        </div>
-      <% end %>
-      <div class="card my-1">
-        <div class="card-body">
-          <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
-            <div class="form-group">
-              <%= f.label 'New message' %>
-              <%= f.text_area :content, class: 'form-control' %>
+    <div class="message-box-container">
+      <div class = "message-box">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><%= @buying.user.name %></h5>
+                <p class="card-date"><em><%= @buying.created_at.strftime("written on %m/%d/%Y at %I:%M%p") %></em></p>
+                <p class="card-text"><%= @buying.message %></p>
             </div>
-            <div class ='button-green'><%= f.submit 'Submit' %></div>
-          <% end %>
+        </div>
+        <% @messages.each do |message| %>
+          <div class="card" id="message_<%= message.id%>">
+            <div class="card-body">
+              <h5 class="card-title"><%= message.user.name %></h5>
+              <p class="card-time"><em><%= message.created_at.strftime("written on %m/%d/%Y at %I:%M%p") %></em></p>
+              <p class="card-text"><%= message.content %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="new-message-card my-1">
+          <div class="card-body">
+            <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
+              <div class="form-group">
+                <%= f.label 'New message' %>
+                <%= f.text_area :content, class: 'form-control' %>
+              </div>
+              <div class='button-green'><%= f.submit 'Submit' %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<% if @buying.material.user == current_user %>
-  <%= simple_form_for @buying do |f| %>
-    <%= f.hidden_field :status, value: "confirmed" %>
-    <%= f.submit "confirm", class: "btn btn-success" %>
-  <% end %>
-
-  <%= simple_form_for @buying do |f| %>
-    <%= f.hidden_field :status, value: "declined" %>
-    <%= f.submit "decline", class: "btn btn-success" %>
-  <% end %>
-<% end %>

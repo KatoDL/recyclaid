@@ -1,16 +1,56 @@
+
 .center-buying-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+} h2 {
+  text-align: center;
+  padding-top: 20px;
 }
 .buying-messages-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding-top: 50px;
 }
+
+.buying-container {
+  word-wrap: normal;
+  width: 350px;
+} p {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.buying-status-highlight {
+  background-color: rgba(101, 109, 74, 0.5);
+}
+
+.buying-img{
+  padding: 10px 0;
+}
+
+.buying-validation-buttons{
+  display: flex;
+  padding-bottom: 10px;
+}
+
 .message-box-container {
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.message-box {
+  width: 500px;
+  height: 300px;
+  overflow: auto;
 }
 
 .card {
   word-wrap: normal;
-  background-color: $beige;
+  background-color: $white;
+  color: $beige;
+}
+
+.new-message-card {
+  background-color: $white;
+  width: 500px;
+  color: $light-green;
 }

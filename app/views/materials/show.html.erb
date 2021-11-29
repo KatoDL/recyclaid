@@ -15,7 +15,7 @@
 
   <%= simple_form_for [@material, @buying] do |f| %>
     <%= f.input :message %>
-    <%= f.hidden_field :status, value: "pending" %>
+    <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
     <%= f.submit %>
   <% end %>
 
