@@ -26,7 +26,6 @@
           <% if buying.user == @user && @form_buyer %>
           <% @form_buyer = false %>
             <%= simple_form_for [ @user, @review ], defaults: { input_html: { class: 'star-review' } } do |f| %>
-              <p>rate this buyer:</p>
               <%= f.input :rating, collection: (1..5).to_a, label: "Rate this buyer" %>
               <%= f.submit "Send review", class: "d-none" %>
             <% end %>
@@ -35,7 +34,16 @@
       <% end %>
       <ul class="list-group">
         <% @user.reviews_as_reviewee.each do |review| %>
-          <li class="list-group-items"><%= review.rating %> -<em><%= review.reviewer.name %></em></li>
+          <div class="review-show">
+            <div class="review-name">
+              <li class="list-group-items"><em><%= review.reviewer.name %></em>: </li>
+            </div>
+            <div class="stars-list">
+              <% review.rating.times do %>
+                <li class="list-group-items"><i class="fas fa-star"></i></li>
+              <% end %>
+            </div>
+          </div>
         <% end %>
       </ul>
     </div>
