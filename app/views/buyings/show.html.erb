@@ -29,7 +29,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title"><%= @buying.user.name %></h5>
-                <p class="card-date"><em><%= @buying.created_at.strftime("written on %m/%d/%Y at %I:%M%p") %></em></p>
+                <p class="card-date"><em><%= @buying.created_at.strftime("written on %d/%m/%Y at %I:%M%p") %></em></p>
                 <p class="card-text"><%= @buying.message %></p>
             </div>
         </div>
@@ -37,7 +37,7 @@
           <div class="card" id="message_<%= message.id%>">
             <div class="card-body">
               <h5 class="card-title"><%= message.user.name %></h5>
-              <p class="card-time"><em><%= message.created_at.strftime("written on %m/%d/%Y at %I:%M%p") %></em></p>
+              <p class="card-time"><em><%= message.created_at.strftime("written on %d/%m/%Y at %I:%M%p") %></em></p>
               <p class="card-text"><%= message.content %></p>
             </div>
           </div>
