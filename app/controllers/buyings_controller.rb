@@ -1,15 +1,15 @@
 class BuyingsController < ApplicationController
   before_action :set_material, only: [:show, :new, :create]
 
+  def new
+    @buying = Buying.new
+  end
   def show
     @buying = Buying.find(params[:id])
     @message = Message.where(user: @user)
     @messages = Message.all.select { |m| m.buying_id == @buying.id }
   end
 
-  def new
-    @buying = Buying.new
-  end
 
   def create
     @buying = Buying.new(buying_params)

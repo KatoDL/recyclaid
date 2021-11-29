@@ -10,13 +10,23 @@
   <p><%= @material.description %></p>
   <p><%= @material.location %></p>
   <p><%= @material.price %>euros</p>
-  <p><%= link_to @material.user.name, user_path(@material.user_id) %></p>
+  <p class='button'><%= link_to "#{@material.user.name}'s profile", user_path(@material.user_id) %></p>
   <br>
-
-  <%= simple_form_for [@material, @buying] do |f| %>
-    <%= f.input :message %>
-    <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
-    <%= f.submit %>
+  <% if @buyings.empty? && current_user != @material.user %>
+      <%= simple_form_for [@material, @buying] do |f| %>
+        <%= f.input :message %>
+        <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
+        <%= f.submit %>
+      <% end %>
+  <% else %>
+    <ul>
+      <% @material.buyings.each do |buying| %>
+        <% if @material.user == current_user || buying.user == current_user %>
+          <div class="button"><%= link_to "Your buying request", material_buying_path(@material, buying) %></div>
+        <% else %>
+            <li><%= "#{buying.user.name} made a buying request" %></li>
+        <% end %>
+      <% end %>
+    </ul>
   <% end %>
-
 </div>
