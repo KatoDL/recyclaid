@@ -20,6 +20,11 @@ class MaterialsController < ApplicationController
     @material = Material.find(params[:id])
     @buying = Buying.new
     @buyings = @material.buyings
+    @markers = [ {
+        lat: @material.latitude,
+        lng: @material.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { material: @material })
+      }]
   end
 
   def new

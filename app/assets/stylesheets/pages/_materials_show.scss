@@ -31,3 +31,18 @@
 ul {
   padding: 0;
 }
+
+.practical-info {
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}
+
+.correct-spacing {
+  p {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
