@@ -7,77 +7,55 @@
 </div>
 <h1><%= @user.name %></h1>
 <em><h5>"<%= @user.description %>"</h5></em>
-<p><%= link_to "Create a new offer", new_material_path %></p>
+<p class="button"><%= link_to "Create a new offer", new_material_path %></p>
+
 <% unless @user.materials.where(available: true).empty? %>
   <h5>Your items</h5>
-  <div class="cards-container-index">
+  <div class="dashboard-cards">
     <% @user.materials.each do |material| %>
       <% if material.available %>
-        <div class="card-container-index">
-          <div class="card-index-images">
-            <% if material.photos.attached? %>
-              <% material.photos.each do |photo| %>
-                <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="card-index-infos">
-            <div class="name-description">
-              <h3><%= link_to material.name, material_path(material) %></h3>
-              <p><%= material.description %></p>
-            </div>
-            <div class="icons">
-              <p><%= humanized_money_with_symbol(material.price) %></p>
-              <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
-            </div>
-            <div>
-              <p><%= link_to "Delete", material_path(material), method: :delete, data: {confirm: "Are you sure?"} %></p>
-            </div>
-          </div>
+        <div class="dashboard-card">
+          <span><%= link_to material.name, material_path(material) %></span>
+          <span class="button"><%= link_to "Delete", material_path(material), method: :delete, data: {confirm: "Are you sure?"} %></span>
         </div>
       <% end %>
     <% end %>
   </div>
 <% end %>
+
 <% if !@buyings.empty? %>
-  <h5>Interests</h5>
-  <div class="cards-container-index">
+  <h5>Your interests</h5>
+  <div class="dashboard-cards">
     <% @buyings.each do |buying| %>
       <% if buying.status != "confirmed" %>
-        <div class="card-container-index">
-          <div class="card-index-images">
-            <% if buying.material.photos.attached? %>
-              <% buying.material.photos.each do |photo| %>
-                <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="card-index-infos">
-            <div class="name-description">
-              <p>Product name : <%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></p>
-            </div>
-          </div>
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <span class="button"><%= link_to "Delete", buying_path(buying), method: :delete, data: {confirm: "Are you sure?"} %></span>
         </div>
       <% end %>
     <% end %>
   </div>
 <% end %>
+
 <% if !@buyings_of_your_materials.empty? %>
   <h5>Sales to be confirmed</h5>
-  <div class="cards-container-index">
+  <div class="dashboard-cards">
     <% @buyings_of_your_materials.each do |buying| %>
       <% if buying.status != "confirmed" %>
-        <div class="card-container-index">
-          <div class="card-index-images">
-            <% if buying.material.photos.attached? %>
-              <% buying.material.photos.each do |photo| %>
-                <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <div class="buying-validation-buttons">
+            <div class="confirm-button">
+              <%= simple_form_for buying do |f| %>
+                <%= f.hidden_field :status, value: "confirmed" %>
+                <%= f.submit "confirm", class: "confirm_delete_button" %>
               <% end %>
-            <% end %>
-          </div>
-          <div class="card-index-infos">
-            <div class="name-description">
-              <p>Product name : <%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></p>
+            </div>
+            <div class="decline-button">
+              <%= simple_form_for buying do |f| %>
+                <%= f.hidden_field :status, value: "declined" %>
+                <%= f.submit "decline", class: "confirm_delete_button" %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -85,11 +63,13 @@
     <% end %>
   </div>
 <% end %>
+
 <% unless @user.materials.where(available: false).empty? %>
   <h5>Previous sales</h5>
-  <div class="cards-container-index">
+  <div class="dashboard-cards">
     <% @user.materials.each do |material| %>
       <% if !material.available %>
+<<<<<<< HEAD
         <div class="card-container-index">
           <div class="card-index-images">
             <% if material.photos.attached? %>
@@ -109,6 +89,27 @@
               <p><strong>This material is sold!</strong></p>
             </div>
           </div>
+=======
+        <div class="dashboard-card">
+          <% material.buyings.each do |buying| %>
+            <span><%= link_to material.name, material_path(material) %></span>
+            <span class="button"><%= link_to "Rate the buyer", user_path(buying.user) %></span>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if !@buyings.empty? %>
+  <h5>Your previous buyings</h5>
+  <div class="dashboard-cards">
+    <% @buyings.each do |buying| %>
+      <% if buying.status == "confirmed" %>
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+>>>>>>> master
         </div>
       <% end %>
     <% end %>
