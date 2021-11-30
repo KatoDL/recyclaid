@@ -27,8 +27,21 @@
         <% if  @buying.status == "confirmed" %>
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'material_id', @material.id %>
+            <%= hidden_field_tag 'buying_id', @buying.id %>
             <%= submit_tag 'Purchase' %>
           <% end %>
+        <% end %>
+      </div>
+      <div class="order-show">
+        <% if @buying.status == "paid" %>
+          <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+          <ul class="list-unstyled">
+            <li><em>ISSUED ON</em> <%= @order.created_at.to_date %></li>
+            <li><em>MATERIAL</em> <%= @order.material.name %> [<%= @order.material_sku %>]</li>
+            <li><em>TOTAL</em> <%= humanized_money_with_symbol @order.amount %></li>
+            <li><strong>Make sure you have an appointment with seller for delivery/collection of you material!</strong></li>
+            </li>
+          </ul>
         <% end %>
       </div>
     </div>

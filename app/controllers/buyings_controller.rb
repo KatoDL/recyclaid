@@ -7,6 +7,7 @@ class BuyingsController < ApplicationController
   def show
     @buying = Buying.find(params[:id])
     @buying.material = @material
+    @order = @buying.order
     @message = Message.where(user: @user)
     @messages = Message.all.select { |m| m.buying_id == @buying.id }
   end
@@ -27,7 +28,7 @@ class BuyingsController < ApplicationController
     @buying = Buying.find(params[:id])
     @buying.update(buying_params)
     @material = @buying.material
-    @material.available = false if @buying.status == "confirmed"
+    @material.available = false if @buying.status == ("confirmed" || "paid")
     @material.save
 
     redirect_to dashboard_path

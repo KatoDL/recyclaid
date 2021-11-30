@@ -69,27 +69,6 @@
   <div class="dashboard-cards">
     <% @user.materials.each do |material| %>
       <% if !material.available %>
-<<<<<<< HEAD
-        <div class="card-container-index">
-          <div class="card-index-images">
-            <% if material.photos.attached? %>
-              <% material.photos.each do |photo| %>
-                <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="card-index-infos">
-            <div class="name-description">
-              <h3><%= link_to material.name, material_path(material) %></h3>
-              <p><%= material.description %></p>
-            </div>
-            <div class="icons">
-              <p><%= humanized_money_with_symbol(material.price) %></p>
-              <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
-              <p><strong>This material is sold!</strong></p>
-            </div>
-          </div>
-=======
         <div class="dashboard-card">
           <% material.buyings.each do |buying| %>
             <span><%= link_to material.name, material_path(material) %></span>
@@ -109,7 +88,21 @@
         <div class="dashboard-card">
           <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
           <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
->>>>>>> master
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= raise %>
+<% if !@buyings.empty? %>
+  <h5>Your paid buyings</h5>
+  <div class="dashboard-cards">
+    <% @buyings.each do |buying| %>
+      <% if buying.status == "paid" %>
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
         </div>
       <% end %>
     <% end %>

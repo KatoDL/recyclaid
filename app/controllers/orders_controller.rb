@@ -5,7 +5,8 @@ class OrdersController < ApplicationController
 
   def create
     material = Material.find(params[:material_id])
-    order = Order.create!(material: material, material_sku: material.sku, amount: material.price, state: 'pending', user: current_user)
+    buying = Buying.find(params[:buying_id])
+    order = Order.create!(material: material, buying: buying, material_sku: material.sku, amount: material.price, state: 'pending', user: current_user)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -16,11 +17,11 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1
       }],
-      success_url: order_url(order),
-      cancel_url: order_url(order)
+      success_url: order_url(buying),
+      cancel_url: order_url(buying)
     )
 
     order.update(checkout_session_id: session.id)
-    redirect_to new_order_payment_path(order)
+    redirect_to material_buying_path(buying)
   end
 end
