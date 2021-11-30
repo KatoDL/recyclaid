@@ -1,0 +1,46 @@
+.dashboard-card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px, solid, $dark-green;
+  padding: 10px 50px;
+}
+
+.dashboard-card a {
+  text-decoration: none;
+  color: $dark-green;
+} a:hover {
+  color: $light-green;
+}
+
+.button a {
+  color: $beige;
+  opacity: 0.7;
+  padding: 7px;
+  border: 2px solid $beige;
+  margin-top: 2px;
+  // border-radius: 4px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.confirm_delete_button {
+  background-color: $dark-green;
+  color: $beige;
+  opacity: 0.7;
+  padding: 7px;
+  border: 2px solid $beige;
+  margin-top: 2px;
+  // border-radius: 4px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+.confirm-button {
+  padding-right: 10px;
+}

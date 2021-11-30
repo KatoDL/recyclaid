@@ -32,6 +32,12 @@ class BuyingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def destroy
+    @buying = Buying.find(params[:id])
+    @buying.destroy
+    redirect_to dashboard_path(current_user)
+  end
+
   private
 
   def set_material
