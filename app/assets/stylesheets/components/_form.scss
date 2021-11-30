@@ -6,7 +6,7 @@
   opacity: 0.8;
   border-radius: 6px;
   color: $beige;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 5%)
+  box-shadow:  0 0 1em rgba(0, 0, 0, .2);
 }
 
 .form_title {
@@ -23,6 +23,7 @@
 }
 
 .input_text {
+  margin-bottom: 20px;
   background-color: $dark-green;
   color: $beige;
   border: none;

@@ -1,32 +1,60 @@
-<div class='material-container'>
-  <h2><%= @material.name %></h2>
-  <ul class='material-photos-list'>
-    <% if @material.photos.attached? %>
-      <% @material.photos.each do |photo| %>
-        <li><div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div></li>
+<div class="material-container">
+  <div class="form_title">
+    <h2><%= @material.name %></h2>
+    <p><%= @material.description %></p>
+  </div>
+  <div class="info-without-title">
+    <div class="material-info">
+      <% if @material.photos.attached? %>
+
+
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <% @material.photos.each do |photo| %>
+              <li><div class='carousel_image' style="background-image: url('<%= cl_image_path photo.key %>')"></div></li>
+            <% end %>
+          </div>
+            <!-- Carousel nav -->
+            <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+        </div>
+
+
       <% end %>
-    <% end %>
-  </ul>
-  <p><%= @material.description %></p>
-  <p><%= @material.location %></p>
-  <p><%= @material.price %>euros</p>
-  <p class='button'><%= link_to "#{@material.user.name}'s profile", user_path(@material.user_id) %></p>
-  <br>
-  <% if @buyings.empty? && current_user != @material.user %>
+      <p><%= @material.price %> euros</p>
+      <p><%= @material.location %></p>
+    </div>
+    <div class="material-buying-request">
+      <p class="button"><%= link_to "See #{@material.user.name}'s other products", user_path(@material.user_id) %></p>
+      <p>Contact <%= @material.user.name %></p>
+      <% if @buyings.empty? && current_user != @material.user %>
       <%= simple_form_for [@material, @buying] do |f| %>
         <%= f.input :message %>
         <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
         <%= f.submit %>
       <% end %>
-  <% else %>
-    <ul>
-      <% @material.buyings.each do |buying| %>
-        <% if @material.user == current_user || buying.user == current_user %>
-          <div class="button"><%= link_to "Your buying request", material_buying_path(@material, buying) %></div>
-        <% else %>
-            <li><%= "#{buying.user.name} made a buying request" %></li>
-        <% end %>
+      <% else %>
+        <ul>
+          <% @material.buyings.each do |buying| %>
+            <% if @material.user == current_user || buying.user == current_user %>
+              <div class="button"><%= link_to "Your buying request", material_buying_path(@material, buying) %></div>
+            <% else %>
+                <li><%= "#{buying.user.name} made a buying request" %></li>
+            <% end %>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+  </div>
+  <div id="map"
+    style="width: 100%; height: 400px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>

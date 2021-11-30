@@ -1,0 +1,33 @@
+.material-container {
+  width: 1000px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: $dark-green;
+  opacity: 0.8;
+  border-radius: 6px;
+  color: $beige;
+  box-shadow:  0 0 1em rgba(0, 0, 0, .2);
+  // justify-content: center;
+}
+
+.head-show-page {
+  align-items: center;
+}
+
+.info-without-title {
+  display: flex;
+}
+
+.material-info {
+  width: 60%;
+  margin-right: 20px;
+}
+
+.material-buying-request {
+  width: 40%;
+  margin-left: 20px;
+}
+
+ul {
+  padding: 0;
+}
