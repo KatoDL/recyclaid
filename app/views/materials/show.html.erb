@@ -55,6 +55,15 @@
               <div class="button"><%= link_to "Your buying request", material_buying_path(@material, buying) %></div>
             <% else %>
                 <li><%= "#{buying.user.name} made a buying request" %></li>
+                <br>
+                <p>Contact <%= @material.user.name %></p>
+                <div class="contact-seller">
+                  <%= simple_form_for [@material, @buying] do |f| %>
+                    <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
+                    <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
+                    <%= f.submit "Send", class:"submit_button" %>
+                    <% end %>
+                </div>
             <% end %>
           <% end %>
         </ul>
