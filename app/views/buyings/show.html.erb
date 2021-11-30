@@ -23,6 +23,14 @@
         <% end %>
       </div>
       <p>Product description : <%= @buying.material.description  %></p>
+      <div class="order-create">
+        <% if  @buying.status == "confirmed" %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'material_id', @material.id %>
+            <%= submit_tag 'Purchase' %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="message-box-container">
       <div class = "message-box">
@@ -57,11 +65,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="order-create">
-    <%= form_tag orders_path do %>
-      <%= hidden_field_tag 'material_id', @material.id %>
-      <%= submit_tag 'Purchase' %>
-    <% end %>
   </div>
 </div>
