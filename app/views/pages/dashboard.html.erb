@@ -48,13 +48,13 @@
             <div class="confirm-button">
               <%= simple_form_for buying do |f| %>
                 <%= f.hidden_field :status, value: "confirmed" %>
-                <%= f.submit "confirm", class: "button" %>
+                <%= f.submit "confirm", class: "confirm_delete_button" %>
               <% end %>
             </div>
             <div class="decline-button">
               <%= simple_form_for buying do |f| %>
                 <%= f.hidden_field :status, value: "declined" %>
-                <%= f.submit "decline", class: "button" %>
+                <%= f.submit "decline", class: "confirm_delete_button" %>
               <% end %>
             </div>
           </div>
