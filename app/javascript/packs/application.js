@@ -30,6 +30,7 @@ import "bootstrap";
 //import "../stylesheets/application.scss";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
+import { initHiddenMenu } from '../plugins/dashboard_menu';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
