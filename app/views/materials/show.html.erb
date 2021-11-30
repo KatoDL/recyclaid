@@ -1,44 +1,53 @@
 <div class="material-container">
   <div class="form_title">
     <h2><%= @material.name %></h2>
-    <p><%= @material.description %></p>
+    <br>
   </div>
   <div class="info-without-title">
     <div class="material-info">
       <% if @material.photos.attached? %>
-
-
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-          </ol>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <!-- Carousel items -->
           <div class="carousel-inner">
-            <% @material.photos.each do |photo| %>
-              <li><div class='carousel_image' style="background-image: url('<%= cl_image_path photo.key %>')"></div></li>
+            <% @material.photos.each_with_index do |photo, i| %>
+            <div class="carousel-item <%= 'active' if i.zero? %> ">
+              <%= cl_image_tag photo.key, class:"d-block w-100" %>
+            </div>
             <% end %>
           </div>
             <!-- Carousel nav -->
-            <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-
-
       <% end %>
-      <p><%= @material.price %> euros</p>
-      <p><%= @material.location %></p>
+      <div class="practical-info">
+        <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
+        <p><%= @material.price %> <i class="fas fa-euro-sign"></i></p>
+      </div>
+      <p><em>"<%= @material.description %>"</em></p>
     </div>
     <div class="material-buying-request">
-      <p class="button"><%= link_to "See #{@material.user.name}'s other products", user_path(@material.user_id) %></p>
-      <p>Contact <%= @material.user.name %></p>
+      <div class="correct-spacing">
+        <p class="button"><%= link_to "See #{@material.user.name}'s other products", user_path(@material.user_id) %></p>
+        <br>
+      </div>
       <% if @buyings.empty? && current_user != @material.user %>
-      <%= simple_form_for [@material, @buying] do |f| %>
-        <%= f.input :message %>
-        <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
-        <%= f.submit %>
-      <% end %>
+      <br>
+      <br>
+      <p>Contact <%= @material.user.name %></p>
+      <div class="contact-seller">
+        <%= simple_form_for [@material, @buying] do |f| %>
+          <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
+          <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
+          <%= f.submit "Send", class:"submit_button" %>
+          <% end %>
+      </div>
       <% else %>
         <ul>
           <% @material.buyings.each do |buying| %>
@@ -50,11 +59,12 @@
           <% end %>
         </ul>
       <% end %>
+      <br>
     </div>
   </div>
-  <div id="map"
-    style="width: 100%; height: 400px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+      <div id="map"
+        style="width: 100%; height: 400px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
 </div>
