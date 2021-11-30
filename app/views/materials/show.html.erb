@@ -27,7 +27,7 @@
 
 
       <% end %>
-      <p><%= @material.price %> euros</p>
+      <p><%= humanized_money_with_symbol(@material.price) %></p>
       <p><%= @material.location %></p>
     </div>
     <div class="material-buying-request">

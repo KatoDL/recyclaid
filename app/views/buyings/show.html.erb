@@ -58,4 +58,10 @@
       </div>
     </div>
   </div>
+  <div class="order-create">
+    <%= form_tag orders_path do %>
+      <%= hidden_field_tag 'material_id', @material.id %>
+      <%= submit_tag 'Purchase' %>
+    <% end %>
+  </div>
 </div>
