@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@material.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @material.description %>
+
 <div class="material-container">
   <div class="form_title">
     <h2><%= @material.name %></h2>
