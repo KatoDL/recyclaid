@@ -3,8 +3,47 @@
     <h2><%= @material.name %></h2>
     <br>
   </div>
-  <div class='info-without-title'>
-    <div class ="material-info">
+  <div class="info-without-title">
+    <div class="material-info">
+      <div class="buying-img">
+        <% if @material.photos.attached? %>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <% @material.photos.each_with_index do |photo, i| %>
+            <div class="carousel-item <%= 'active' if i.zero? %> ">
+              <%= cl_image_tag photo.key, class:"carousel-img" %>
+            </div>
+            <% end %>
+          </div>
+            <!-- Carousel nav -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <% end %>
+      </div>
+      <div class="practical-info">
+        <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
+        <p><%= @material.price %> <i class="fas fa-euro-sign"></i></p>
+      </div>
+      <p> <em> <%= @buying.material.description  %> </em></p>
+    </div>
+    <div class="material-buying-request">
+      <div class="order-create">
+        <% if  @buying.status == "confirmed" %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'material_id', @material.id %>
+            <%= hidden_field_tag 'buying_id', @buying.id %>
+            <%= submit_tag 'Purchase' %>
+          <% end %>
+        <% end %>
+      </div>
       <% if @buying.status != 'paid' %>
         <p class='buying-status-highlight'><%= @buying.status %></p>
       <% else %>
@@ -28,42 +67,6 @@
           <% end %>
         <% end %>
       </div>
-      <div class="buying-img">
-        <% if @material.photos.attached? %>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            <% @material.photos.each_with_index do |photo, i| %>
-            <div class="carousel-item <%= 'active' if i.zero? %> ">
-              <%= cl_image_tag photo.key, class:"carousel-img" %>
-            </div>
-            <% end %>
-          </div>
-            <!-- Carousel nav -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      <% end %>
-      <div class="practical-info">
-        <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
-        <p><%= @material.price %> <i class="fas fa-euro-sign"></i></p>
-      </div>
-      <p> <em> <%= @buying.material.description  %> </em></p>
-      <div class="order-create">
-        <% if  @buying.status == "confirmed" %>
-          <%= form_tag orders_path do %>
-            <%= hidden_field_tag 'material_id', @material.id %>
-            <%= hidden_field_tag 'buying_id', @buying.id %>
-            <%= submit_tag 'Purchase' %>
-          <% end %>
-        <% end %>
-      </div>
       <div class="order-show">
         <% if @buying.status == "paid" %>
           <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
@@ -76,26 +79,6 @@
           </ul>
         <% end %>
       </div>
-    </div>
-    <div class="material-buying-request">
-        <p class='buying-status-highlight'><%= @buying.status %></p>
-        <div class="buying-validation-buttons">
-          <% if @buying.material.user == current_user %>
-            <%= simple_form_for @buying do |f| %>
-              <%= f.hidden_field :status, value: "confirmed" %>
-              <div class="con_btn">
-                <%= f.submit "confirm", class: "submit_button" %>
-              </div>
-            <% end %>
-            <%= simple_form_for @buying do |f| %>
-              <%= f.hidden_field :status, value: "declined" %>
-              <div class="dec_btn">
-                <%= f.submit "decline", class: "submit_button" %>
-              </div>
-              <br>
-            <% end %>
-          <% end %>
-        </div>
       <div class = "message-box">
         <div class="card">
           <div class="card-body">
@@ -119,23 +102,22 @@
       <br>
       <br>
       <div class="new-message-card my-1">
-          <div class="new-msg">
-            <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
-              <div class="form-group">
-                <%= f.label 'New message' %>
-                <%= f.text_area :content, class:'form-control' %>
-              </div>
-              <div class='button-green'><%= f.submit "Send", class:"submit_button" %>
-              </div>
-            <% end %>
-          </div>
+        <div class="new-msg">
+          <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
+            <div class="form-group">
+              <%= f.label 'New message' %>
+              <%= f.text_area :content, class:'form-control' %>
+            </div>
+            <div class='button-green'><%= f.submit "Send", class:"submit_button" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-    <div id="map"
-      style="width: 100%; height: 400px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+  </div>
+  <div id="map"
+    style="width: 100%; height: 400px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
