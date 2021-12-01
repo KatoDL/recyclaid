@@ -3,6 +3,8 @@ class Material < ApplicationRecord
   has_many :buyings
   has_many_attached :photos
 
+  monetize :price_cents
+
   validates :description, presence: true
   validates :description, length: { minimum: 6 }
   validates :name, presence: true
