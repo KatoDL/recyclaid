@@ -1,3 +1,33 @@
+.dashboard-page-container{
+  margin: 0 auto;
+  width: 700px;
+  align-items: center;
+}
+
+.user-dashboard-profile {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.dashboard-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid $beige;
+}
+
+.dashboard-user-infos{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: flex-start;
+} p {
+  padding-top: 10px;
+}
+
 .dashboard-card {
   display: flex;
   justify-content: space-between;
@@ -24,6 +54,10 @@
     text-decoration: none;
     opacity: 1;
   }
+}
+
+.dashboard-title {
+  cursor: default;
 }
 
 .confirm_delete_button {
