@@ -1,0 +1,5 @@
+meta_product_name: "Recyclaid"
+meta_title: "Recyclaid - Don't be trashy, reuse building materials!"
+meta_description: "Recyclaid is a web app allowing families to sell remaining materials to other indivuals."
+meta_image: "full.jpg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
