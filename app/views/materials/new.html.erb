@@ -8,7 +8,7 @@
       <%= f.input :name, input_html:{class:"input_text"}, placeholder:"Name", label: false %>
       <%= f.input :description, input_html:{class:"input_text"}, placeholder:"Description of your product", label: false %>
       <%= f.input :location, input_html:{class:"input_text"}, placeholder:"Address", label: false %>
-      <%= f.input :price, input_html:{class:"input_text"}, placeholder:"Price in €", label: false %>
+      <%= f.input :price_cents, as: :text, input_html:{class:"input_text" ,value: nil}, placeholder:"Price in €", label: false %>
       <br>
       <%= f.input :photos, as: :file, input_html:{multiple: true}, label: false %>
       <br>
