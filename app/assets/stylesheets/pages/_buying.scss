@@ -1,14 +1,3 @@
-.buying-show {
-  width: 1200px;
-  margin: 60px auto;
-  padding: 40px;
-  background-color: $dark-green;
-  opacity: 0.8;
-  border-radius: 6px;
-  color: $beige;
-  box-shadow:  0 0 1em rgba(0, 0, 0, .2);
-}
-
 h2 {
   padding-top: 20px;
 }
@@ -42,7 +31,7 @@ p {
   width: 100%;
   height: 300px;
   overflow: auto;
-  padding: 16px;
+  // padding: 16px;
 }
 
 .card {
