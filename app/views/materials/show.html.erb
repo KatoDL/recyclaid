@@ -44,7 +44,7 @@
       <div class="contact-seller">
         <%= simple_form_for [@material, @buying] do |f| %>
           <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
-          <%= f.hidden_field :status, value: "#{current_user.name} made a buying request" %>
+          <%= f.hidden_field :status, value: "pending" %>
           <%= f.submit "Send", class:"submit_button" %>
           <% end %>
       </div>

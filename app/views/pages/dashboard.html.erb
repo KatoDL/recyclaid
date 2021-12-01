@@ -80,23 +80,37 @@
       <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Previous sales</h5>
       <div class="dashboard-cards d-none" data-dashboard-target="cards4">
         <% @user.materials.each do |material| %>
-          <% if !material.available %>
             <div class="dashboard-card">
               <% material.buyings.each do |buying| %>
-                <span><%= link_to material.name, material_path(material) %></span>
-                <span class="button"><%= link_to "Rate the buyer", user_path(buying.user) %></span>
+                <% if buying.status == "confirmed" %>
+                  <span><%= link_to material.name, material_path(material) %></span>
+                  <span class="button"><%= link_to "Rate the buyer", user_path(buying.user) %></span>
+                <% end %>
               <% end %>
             </div>
-          <% end %>
         <% end %>
       </div>
     <% end %>
 
-    <% if !@buyings.empty? %>
+
+  <% @buyings.each do |buying| %>
+    <% if buying.status == "confirmed" %>
       <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your previous buyings</h5>
       <div class="dashboard-cards d-none" data-dashboard-target="cards5">
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+    <% if !@buyings.empty? %>
+      <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your paid buyings</h5>
+      <div class="dashboard-cards d-none" data-dashboard-target="cards6">
         <% @buyings.each do |buying| %>
-          <% if buying.status == "confirmed" %>
+          <% if buying.status == "paid" %>
             <div class="dashboard-card">
               <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
               <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
@@ -105,18 +119,5 @@
         <% end %>
       </div>
     <% end %>
-
-  <% if !@buyings.empty? %>
-    <h5>Your paid buyings</h5>
-    <div class="dashboard-cards">
-      <% @buyings.each do |buying| %>
-        <% if buying.status == "paid" %>
-          <div class="dashboard-card">
-            <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-            <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 </div>
