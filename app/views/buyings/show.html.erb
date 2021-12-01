@@ -1,6 +1,6 @@
-<% content_for :meta_title, "#{@buying.name} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, @buying.description %>
-<% content_for :meta_image, cl_image_path(@buying.photo.path) %>
+<% content_for :meta_title, "#{@buying.material.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @buying.material.description %>
+<% content_for :meta_image, cl_image_path(@buying.material.photos.first.key) %>
 
 <div class="buying-show">
   <div class="form_title">
