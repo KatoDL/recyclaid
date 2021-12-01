@@ -36,6 +36,4 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   initStarRating();
-
-
 });
