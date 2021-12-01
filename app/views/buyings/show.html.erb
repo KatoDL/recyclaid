@@ -3,9 +3,33 @@
     <h2><%= @material.name %></h2>
     <br>
   </div>
-  <div class="info-without-title">
-    <div class="material-info">
-      <% if @material.photos.attached? %>
+  <div class='info-without-title'>
+    <div class ="material-info">
+      <% if @buying.status != 'paid' %>
+        <p class='buying-status-highlight'><%= @buying.status %></p>
+      <% else %>
+        <p class='buying-status-highlight'>This order was paid by <%= @buying.user.name %></p>
+      <% end %>
+      <div class="buying-validation-buttons">
+        <% if @buying.material.user == current_user %>
+          <% if @buying.status == "pending" %>
+            <%= simple_form_for @buying do |f| %>
+              <%= f.hidden_field :status, value: "confirmed" %>
+              <div class="con_btn">
+                <%= f.submit "confirm", class: "submit_button" %>
+              </div>
+            <% end %>
+            <%= simple_form_for @buying do |f| %>
+              <%= f.hidden_field :status, value: "declined" %>
+              <div class="dec_btn">
+                <%= f.submit "decline", class: "submit_button" %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="buying-img">
+        <% if @material.photos.attached? %>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <!-- Carousel items -->
           <div class="carousel-inner">
@@ -30,7 +54,28 @@
         <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
         <p><%= @material.price %> <i class="fas fa-euro-sign"></i></p>
       </div>
-      <p><em>"<%= @material.description %>"</em></p>
+      <p> <em> <%= @buying.material.description  %> </em></p>
+      <div class="order-create">
+        <% if  @buying.status == "confirmed" %>
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'material_id', @material.id %>
+            <%= hidden_field_tag 'buying_id', @buying.id %>
+            <%= submit_tag 'Purchase' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="order-show">
+        <% if @buying.status == "paid" %>
+          <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+          <ul class="list-unstyled">
+            <li><em>ISSUED ON</em> <%= @order.created_at.to_date %></li>
+            <li><em>MATERIAL</em> <%= @order.material.name %> [<%= @order.material_sku %>]</li>
+            <li><em>TOTAL</em> <%= humanized_money_with_symbol @order.amount %></li>
+            <li><strong>Make sure you have an appointment with seller for delivery/collection of you material!</strong></li>
+            </li>
+          </ul>
+        <% end %>
+      </div>
     </div>
     <div class="material-buying-request">
         <p class='buying-status-highlight'><%= @buying.status %></p>

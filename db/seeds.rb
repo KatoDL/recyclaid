@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning database..."
 Buying.destroy_all
+Order.destroy_all
 Material.destroy_all
 User.destroy_all
 
@@ -22,9 +23,9 @@ profileDorian = 'https://avatars.githubusercontent.com/u/91681036?v=4'
 profileQA = 'https://avatars.githubusercontent.com/u/88784113?v=4'
 profileKato = 'https://avatars.githubusercontent.com/u/90604908?s=400&u=121891aed02f1f0338c1164b23972642156546d2&v=4'
 
-material1 = Material.create!({ name: "Kato's wood", description: "I have some wood left over from breaking down my shed.", location: "Cantersteen 12, 1000 Bruxelles", price: 5, user: user2 })
-material2 = Material.create!({ name: "Quynh-Anh's windows", description: "I bought the wrong windows for my house, so now I'm selling them here.", location: "Rue du MArché aux Herbes 56, 1000 Bruxelles", price: 4, user: user1 })
-material3 = Material.create!({ name: "Dorian's sand", description: "I am building my house myself and I dug up a lot of sand!", location: "Chaussée d'Alsemberg 252, 1190 Forest", price: 4, user: user3 })
+material1 = Material.create!({ name: "Kato's wood", description: "I have some wood left over from breaking down my shed.", location: "Cantersteen 12, 1000 Bruxelles", price: 5000, user: user2, sku: 'kato-wood' })
+material2 = Material.create!({ name: "Quynh-Anh's windows", description: "I bought the wrong windows for my house, so now I'm selling them here.", location: "Rue du MArché aux Herbes 56, 1000 Bruxelles", price: 4000, user: user1, sku: 'Quynh-Anh-windows' })
+material3 = Material.create!({ name: "Dorian's sand", description: "I am building my house myself and I dug up a lot of sand!", location: "Chaussée d'Alsemberg 252, 1190 Forest", price: 4000, user: user3, sku: 'dorian-sand' })
 
 material1.photos.attach(io: URI.open(photo1), filename: "wood.png", content_type: 'image/jpeg')
 material2.photos.attach(io: URI.open(photo2), filename: "window.png", content_type: 'image/jpeg')
