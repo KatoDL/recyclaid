@@ -29,10 +29,16 @@
   background-color: $dark-green;
   border-radius: 4px;
   border: none;
+  padding: 0;
 }
 
 .dropdown-item {
   color: $beige;
+  &:hover {
+    background-color: $dark-green;
+    border-radius: 4px;
+    color: white;
+  }
 }
 
 .word-links {
