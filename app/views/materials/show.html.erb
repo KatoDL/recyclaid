@@ -14,7 +14,7 @@
           <div class="carousel-inner">
             <% @material.photos.each_with_index do |photo, i| %>
             <div class="carousel-item <%= 'active' if i.zero? %> ">
-              <%= cl_image_tag photo.key, class:"d-block w-100" %>
+              <%= cl_image_tag photo.key, class:"carousel-img" %>
             </div>
             <% end %>
           </div>
@@ -75,9 +75,9 @@
       <br>
     </div>
   </div>
-      <div id="map"
-        style="width: 100%; height: 400px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
+  <div id="map"
+    style="width: 100%; height: 400px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
