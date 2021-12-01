@@ -27,7 +27,7 @@
                 <p><%= material.description %></p>
               </div>
               <div class="icons">
-                <p><i class="fas fa-euro-sign"></i> <%= material.price %></p>
+                <p><%= humanized_money_with_symbol(material.price) %></p>
                 <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
               </div>
             </div>

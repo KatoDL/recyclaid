@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_26_135644) do
+ActiveRecord::Schema.define(version: 2021_11_30_153714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2021_11_26_135644) do
     t.float "latitude"
     t.float "longitude"
     t.boolean "available", default: true
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["user_id"], name: "index_materials_on_user_id"
   end
 
@@ -69,6 +71,21 @@ ActiveRecord::Schema.define(version: 2021_11_26_135644) do
     t.bigint "buying_id"
     t.index ["buying_id"], name: "index_messages_on_buying_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "material_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "buying_id"
+    t.index ["buying_id"], name: "index_orders_on_buying_id"
+    t.index ["material_id"], name: "index_orders_on_material_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -101,6 +118,8 @@ ActiveRecord::Schema.define(version: 2021_11_26_135644) do
   add_foreign_key "buyings", "users"
   add_foreign_key "materials", "users"
   add_foreign_key "messages", "users"
+  add_foreign_key "orders", "materials"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "users", column: "reviewee_id"
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end
