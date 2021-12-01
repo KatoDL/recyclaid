@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def show
-  @order = current_user.orders.find(params[:id])
+    # @order = Order.find(params[:id])
+    @order = current_user.orders.find(params[:id])
   end
 
   def create
@@ -17,11 +18,12 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1
       }],
-      success_url: order_url(buying),
-      cancel_url: order_url(buying)
+      success_url: material_buying_url(material, buying),
+      cancel_url: order_url(order)
     )
 
     order.update(checkout_session_id: session.id)
-    redirect_to material_buying_path(buying)
+    redirect_to new_order_payment_path(order)
+    # redirect_to material_buying_path(material, buying)
   end
 end

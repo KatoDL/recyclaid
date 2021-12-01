@@ -4,6 +4,7 @@ class BuyingsController < ApplicationController
   def new
     @buying = Buying.new
   end
+
   def show
     @buying = Buying.find(params[:id])
     @buying.material = @material
