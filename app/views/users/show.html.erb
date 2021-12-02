@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <h1><%= @user.name %></h1>
-    <h4>"<%= @user.description %>"</h4>
+    <h5>"<%= @user.description %>"</h5>
     <div class="review">
       <% @user.materials.each do |material| %>
         <% material.buyings.each do |buying| %>
@@ -39,7 +39,7 @@
         <% @user.reviews_as_reviewee.each do |review| %>
           <div class="review-show">
             <div class="review-name">
-              <li class="list-group-items"><em><%= review.reviewer.name %></em>: </li>
+              <li class="list-group-items"><em><%= review.reviewer.name %> gave : </em> </li>
             </div>
             <div class="stars-list">
               <% review.rating.times do %>
@@ -58,7 +58,7 @@
         <hr>
         <% @user.materials.each do |material| %>
           <% if material.available %>
-            <div class="card-container-index">
+            <div class="card-container">
               <div class="card-index-images">
                 <% if material.photos.attached? %>
                   <% material.photos.each do |photo| %>
