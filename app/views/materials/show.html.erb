@@ -41,12 +41,21 @@
         <%= simple_form_for [@material, @buying] do |f| %>
           <%= f.hidden_field :message, input_html:{class:"input_text"}, placeholder:"Message", label: false, value: "Hi, I'm intersted in your product!" %>
           <%= f.hidden_field :status, value: "pending" %>
-          <%= f.submit "I'm interested!", class:"submit_button" %>
+          <%= f.submit "I'm interested!", class:"btn_interest" %>
           <% end %>
       </div>
-      <br>
-      <br>
-      <p>Contact <%= @material.user.name %></p>
+      <div class="correct-spacing">
+        <div class="profile_link">
+          <% if @material.user.photo.attached? %>
+            <%= link_to user_path(@material.user_id) do %>
+              <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
+          <% end %>
+        </div>
+        <p>Contact <%= @material.user.name %></p>
+      </div>
       <div class="contact-seller">
         <%= simple_form_for [@material, @buying] do |f| %>
           <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
@@ -54,7 +63,6 @@
           <%= f.submit "Send", class:"submit_button" %>
           <% end %>
       </div>
-      <br>
       <% else %>
         <ul>
           <% @material.buyings.each do |buying| %>
@@ -64,7 +72,18 @@
                 <% unless buying.status == 'declined' %>
                    <li><%= "#{buying.user.name} made a buying request" %></li>
                 <% end %>
-                <p>Contact <%= @material.user.name %> to </p>
+                <div class="correct-spacing">
+                  <div class="profile_link">
+                    <% if @material.user.photo.attached? %>
+                      <%= link_to user_path(@material.user_id) do %>
+                        <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
+                      <% end %>
+                    <% else %>
+                      <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
+                    <% end %>
+                  </div>
+                  <p>Contact <%= @material.user.name %></p>
+                </div>
                 <div class="contact-seller">
                   <%= simple_form_for [@material, @buying] do |f| %>
                     <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
@@ -76,21 +95,6 @@
           <% end %>
         </ul>
       <% end %>
-      <div class="correct-spacing">
-        <div class="profile_link">
-          <% if @material.user.photo.attached? %>
-            <%= link_to user_path(@material.user_id) do %>
-              <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
-            <% end %>
-          <% else %>
-            <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
-          <% end %>
-        </div>
-        <div class="profile_link">
-        <p><%= link_to "See #{@material.user.name}'s other products", user_path(@material.user_id) %></p>
-        </div>
-      </div>
-      <br>
     </div>
   </div>
   <div id="map"
