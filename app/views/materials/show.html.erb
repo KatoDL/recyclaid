@@ -73,28 +73,28 @@
             <% if @material.user == current_user || buying.user == current_user %>
               <div class="button"><%= link_to "Your buying request", material_buying_path(@material, buying) %></div>
             <% else %>
-                <% unless buying.status == 'declined' %>
-                   <li><%= "#{buying.user.name} made a buying request" %></li>
-                <% end %>
-                <div class="correct-spacing">
-                  <div class="profile_link">
-                    <% if @material.user.photo.attached? %>
-                      <%= link_to user_path(@material.user_id) do %>
-                        <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
-                      <% end %>
-                    <% else %>
-                      <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
+              <% unless buying.status == 'declined' %>
+                  <li><%= "#{buying.user.name} made a buying request" %></li>
+              <% end %>
+              <div class="correct-spacing">
+                <div class="profile_link">
+                  <% if @material.user.photo.attached? %>
+                    <%= link_to user_path(@material.user_id) do %>
+                      <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
                     <% end %>
-                  </div>
-                  <p>Contact <%= @material.user.name %></p>
+                  <% else %>
+                    <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
+                  <% end %>
                 </div>
-                <div class="contact-seller">
-                  <%= simple_form_for [@material, @buying] do |f| %>
-                    <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
-                    <%= f.hidden_field :status, value: "pending" %>
-                    <%= f.submit "Send", class:"submit_button" %>
-                    <% end %>
-                </div>
+                <p>Contact <%= @material.user.name %></p>
+              </div>
+              <div class="contact-seller">
+                <%= simple_form_for [@material, @buying] do |f| %>
+                  <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
+                  <%= f.hidden_field :status, value: "pending" %>
+                  <%= f.submit "Send", class:"submit_button" %>
+                  <% end %>
+              </div>
             <% end %>
           <% end %>
         </ul>
