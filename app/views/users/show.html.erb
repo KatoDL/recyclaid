@@ -5,9 +5,9 @@
   <div class="info-container">
     <div class="profilepicture">
       <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, class: "imgprofile" %>
+        <%= cl_image_tag @user.photo.key, class: "user-profile-avatar" %>
       <% else %>
-        <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "imgprofile" %>
+        <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "user-profile-avatar" %>
       <% end %>
     </div>
     <h1><%= @user.name %></h1>
@@ -51,7 +51,7 @@
       </ul>
     </div>
   </div>
-  <div class="profilecontent">
+  <div class="user-material-cards">
     <% unless @user.materials.where(available: true).empty? %>
       <div class="itemsforsale">
         <h3>Items for sale</h3>
@@ -68,7 +68,7 @@
               </div>
               <div class="card-index-infos">
                 <div class="name-description">
-                  <h3><%= link_to material.name, material_path(material) %></h3>
+                  <h3><%=material.name %></h3>
                   <p><%= material.description %></p>
                 </div>
                 <div class="icons">
