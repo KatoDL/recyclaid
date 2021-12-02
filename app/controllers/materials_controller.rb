@@ -17,6 +17,7 @@ class MaterialsController < ApplicationController
   end
 
   def show
+    # @user = User.find(params[:user_id])
     @material = Material.find(params[:id])
     @buying = Buying.new
     @buyings = @material.buyings
