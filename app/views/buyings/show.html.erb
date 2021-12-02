@@ -62,9 +62,7 @@
           <% end %>
         <% end %>
       </div>
-      <% if @buying.status != 'paid' %>
-        <p class='buying-status-highlight'><%= @buying.status %></p>
-      <% else %>
+      <% if @buying.status == 'paid' %>
         <p class='buying-status-highlight'>This order was paid by <%= @buying.user.name %></p>
       <% end %>
       <div class="buying-validation-buttons">
@@ -97,38 +95,40 @@
           </ul>
         <% end %>
       </div>
-      <div class = "message-box">
-        <div class="card">
-          <div class="card-body">
-            <div class="msg-info">
-              <h5 class="card-title"><%= @buying.user.name %> at <em><%= @buying.created_at.strftime("%I:%M%p (%d/%m/%Y)") %></em></h5>
-            </div>
-              <p class="card-text"><%= @buying.message %></p>
-          </div>
-        </div>
-        <% @messages.each do |message| %>
-          <div class="card" id="message_<%= message.id%>">
+      <div class="message">
+        <div class = "message-box">
+          <div class="card">
             <div class="card-body">
               <div class="msg-info">
-                <h5 class="card-title"><%= message.user.name %> at <em><%= message.created_at.strftime("%I:%M%p (%d/%m/%Y)") %></em></h5>
+                <h5 class="card-title"><%= @buying.user.name %> at <em><%= @buying.created_at.strftime("%I:%M%p (%d/%m/%Y)") %></em></h5>
               </div>
-              <p class="card-text"><%= message.content %></p>
+                <p class="card-text"><%= @buying.message %></p>
             </div>
           </div>
-        <% end %>
-      </div>
-      <br>
-      <br>
-      <div class="new-message-card my-1">
-        <div class="new-msg">
-          <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
-            <div class="form-group">
-              <%= f.label 'New message' %>
-              <%= f.text_area :content, class:'form-control' %>
-            </div>
-            <div class='button-green'><%= f.submit "Send", class:"submit_button" %>
+          <% @messages.each do |message| %>
+            <div class="card" id="message_<%= message.id%>">
+              <div class="card-body">
+                <div class="msg-info">
+                  <h5 class="card-title"><%= message.user.name %> at <em><%= message.created_at.strftime("%I:%M%p (%d/%m/%Y)") %></em></h5>
+                </div>
+                <p class="card-text"><%= message.content %></p>
+              </div>
             </div>
           <% end %>
+        </div>
+        <br>
+        <br>
+        <div class="new-message-card my-1">
+          <div class="new-msg">
+            <%= form_with(model: [@buying, @buying.messages.build]) do |f| %>
+              <div class="form-group">
+                <%= f.label 'New message' %>
+                <%= f.text_area :content, class:'form-control' %>
+              </div>
+              <div class='button-green'><%= f.submit "Send", class:"submit_button" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
