@@ -28,6 +28,13 @@
   margin-left: 20px;
 }
 
+.interactions {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 ul {
   padding: 0;
 }
@@ -42,9 +49,25 @@ ul {
 }
 
 .correct-spacing {
+  margin-top: 70px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
   p {
-    padding-left: 0;
-    padding-right: 0;
+    margin: 0;
+  }
+}
+
+.profile_link {
+  padding: 10px;
+  a {
+    color: $beige;
+    text-decoration: none;
+    &:hover {
+      color: white;
+    }
   }
 }
 

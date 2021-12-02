@@ -21,3 +21,22 @@
   border-radius: 4px;
   margin-right: 10px;
 }
+
+.interested {
+  display: flex;
+  justify-content: center;
+}
+
+.btn_interest {
+  font-weight: 700;
+  font-size: 20px;
+  height: 60px;
+  width: 320px;
+  color: $beige;
+  background-color: #5A6347;
+  border: 3px solid $beige;
+  border-radius: 4px;
+  &:hover {
+    background-color: $dark-green;
+  }
+}
