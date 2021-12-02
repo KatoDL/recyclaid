@@ -12,12 +12,12 @@
     </div>
     <div class="cards-container-index">
       <% @materials.each do |material| %>
-        <%= link_to material_path(material) do %>
+      <%= link_to material_path(material) do %>
           <% if material.available %>
             <div class="card-container-index">
               <div class="card-index-images">
                 <% if material.photos.attached? %>
-                  <% material.photos.each do |photo| %>
+                  <% material.photos.first(1).each do |photo| %>
                     <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
                   <% end %>
                 <% end %>
