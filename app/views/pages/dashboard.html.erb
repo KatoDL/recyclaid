@@ -10,49 +10,51 @@
       <div class="dashboard-user-infos">
         <h1><%= @user.name %></h1>
         <em><h5>"<%= @user.description %>"</h5></em>
-        <p class="button"><%= link_to "Create a new offer", new_material_path %></p>
+        <p class="dashboard-button"><%= link_to "Create a new offer", new_material_path %></p>
       </div>
   </div>
 
   <div class="dashboard-section" data-controller="dashboard">
+    <div class="title-arrow" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm">
+      <h5>Your items </h5>
     <% unless @user.materials.where(available: true).empty? %>
-      <h5 class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm">Your items</h5>
+      <i class="fas fa-arrow-down"></i>
+    </div>
       <div class="dashboard-cards d-none" data-dashboard-target="cards">
         <% @user.materials.each do |material| %>
           <% if material.available %>
             <div class="dashboard-card">
               <span><%= link_to material.name, material_path(material) %></span>
-              <span class="button"><%= link_to "Delete", material_path(material), method: :delete, data: {confirm: "Are you sure?"} %></span>
+              <span class="dashboard-button"><%= link_to "Delete", material_path(material), method: :delete, data: {confirm: "Are you sure?"} %></span>
             </div>
           <% end %>
         <% end %>
       </div>
     <% end %>
 
-
-    <% @buyings.each do |buying| %>
-      <% if buying.status == "pending" %>
-        <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your interests</h5>
-        <div class="dashboard-cards d-none" data-dashboard-target="cards2">
-          <div class="dashboard-card">
-            <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-            <span class="button"><%= link_to "Delete", buying_path(buying), method: :delete, data: {confirm: "Are you sure?"} %></span>
-          </div>
+    <div class="title-arrow" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm">
+      <h5>Your interests</h5>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+    <div class="dashboard-cards d-none" data-dashboard-target="cards2">
+      <% @buyings.each do |buying| %>
+        <% if buying.status == "pending" %>
+        <div class="dashboard-card">
+          <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+          <span class="dashboard-button"><%= link_to "Delete", buying_path(buying), method: :delete, data: {confirm: "Are you sure?"} %></span>
         </div>
-      <% elsif buying.status == "declined" %>
-        <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your interests</h5>
-        <div class="dashboard-cards d-none" data-dashboard-target="cards2">
+        <% elsif buying.status == "declined" %>
           <div class="dashboard-card">
             <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
             <span> Be careful, your request has been <strong><%= buying.status %></strong></span>
-            <span class="button"><%= link_to "Delete", buying_path(buying), method: :delete, data: {confirm: "Are you sure?"} %></span>
+            <span class="dashboard-button"><%= link_to "Delete", buying_path(buying), method: :delete, data: {confirm: "Are you sure?"} %></span>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
+    <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Sales to be confirmed</h5>
     <% if !@buyings_of_your_materials.empty? %>
-      <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Sales to be confirmed</h5>
       <div class="dashboard-cards d-none" data-dashboard-target="cards3">
         <% @buyings_of_your_materials.each do |buying| %>
           <% if buying.status == "pending" %>
@@ -78,15 +80,15 @@
       </div>
     <% end %>
 
+    <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Previous sales</h5>
     <% unless @user.materials.where(available: false).empty? %>
-      <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Previous sales</h5>
       <div class="dashboard-cards d-none" data-dashboard-target="cards4">
         <% @user.materials.each do |material| %>
             <div class="dashboard-card">
               <% material.buyings.each do |buying| %>
                 <% if buying.status == "confirmed" %>
                   <span><%= link_to material.name, material_path(material) %></span>
-                  <span class="button"><%= link_to "Rate the buyer", user_path(buying.user) %></span>
+                  <span class="dashboard-button"><%= link_to "Rate the buyer", user_path(buying.user) %></span>
                 <% end %>
               <% end %>
             </div>
@@ -95,25 +97,25 @@
     <% end %>
 
 
+    <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your previous buyings</h5>
     <% @buyings.each do |buying| %>
       <% if buying.status == "confirmed" %>
-        <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your previous buyings</h5>
         <div class="dashboard-cards d-none" data-dashboard-target="cards5">
           <div class="dashboard-card">
             <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-            <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+            <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
           </div>
         </div>
       <% end %>
     <% end %>
 
+    <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your paid buyings</h5>
     <% @buyings.each do |buying| %>
       <% if buying.status == "paid" %>
-        <h5 class="dashboard-title" data-action="click->dashboard#displayForm">Your paid buyings</h5>
         <div class="dashboard-cards d-none" data-dashboard-target="cards6">
           <div class="dashboard-card">
             <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-            <span class="button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+            <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
           </div>
         </div>
       <% end %>
