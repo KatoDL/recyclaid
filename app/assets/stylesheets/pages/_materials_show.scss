@@ -55,10 +55,10 @@ ul {
   a {
     color: $beige;
     text-decoration: none;
-    opacity: 0.8;
+    // opacity: 0.8;
     &:hover {
-      color: $beige;
-      opacity: 1;
+      color: white;
+      // opacity: 1;
     }
   }
 }

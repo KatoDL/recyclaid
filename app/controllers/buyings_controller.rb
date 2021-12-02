@@ -8,7 +8,8 @@ class BuyingsController < ApplicationController
   def show
     @buying = Buying.find(params[:id])
     @buying.material = @material
-    @order = @buying.orders.last
+    @order = current_user.orders.find_by(material: @material)
+    # @order = @buying.orders.last
     @message = Message.where(user: @user)
     @messages = Message.all.select { |m| m.buying_id == @buying.id }
   end
