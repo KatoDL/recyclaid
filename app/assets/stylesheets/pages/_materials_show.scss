@@ -1,5 +1,5 @@
 .material-container {
-  width: 1000px;
+  width: 1200px;
   margin: 60px auto;
   padding: 40px;
   background-color: $dark-green;
@@ -7,7 +7,6 @@
   border-radius: 6px;
   color: $beige;
   box-shadow:  0 0 1em rgba(0, 0, 0, .2);
-  // justify-content: center;
 }
 
 .head-show-page {
@@ -34,6 +33,7 @@ ul {
 }
 
 .practical-info {
+  width: 600px;
   display: flex;
   justify-content: space-between;
   p {
@@ -46,4 +46,20 @@ ul {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.carousel-inner {
+  height: 400px;
+}
+
+.carousel-control-next {
+  right: 48px;
+}
+
+.carousel-img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
 }
