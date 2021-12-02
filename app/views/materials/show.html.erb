@@ -41,6 +41,13 @@
         <br>
       </div>
       <% if @buyings.empty? && current_user != @material.user %>
+      <div class="interested">
+        <%= simple_form_for [@material, @buying] do |f| %>
+          <%= f.hidden_field :message, input_html:{class:"input_text"}, placeholder:"Message", label: false, value: "Hi, I'm intersted in your product!" %>
+          <%= f.hidden_field :status, value: "pending" %>
+          <%= f.submit "I'm interested!", class:"submit_button" %>
+          <% end %>
+      </div>
       <br>
       <br>
       <p>Contact <%= @material.user.name %> to </p>
@@ -64,7 +71,7 @@
                 <div class="contact-seller">
                   <%= simple_form_for [@material, @buying] do |f| %>
                     <%= f.input :message, input_html:{class:"input_text"}, placeholder:"Message", label: false %>
-                    <%= f.hidden_field :status, value: "A buying request was made by #{current_user.name}" %>
+                    <%= f.hidden_field :status, value: "pending" %>
                     <%= f.submit "Send", class:"submit_button" %>
                     <% end %>
                 </div>
