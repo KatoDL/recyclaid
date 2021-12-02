@@ -44,10 +44,20 @@
 }
 
 .submit_button {
+  font-weight: 700;
   height: 40px;
   width: 100%;
   color: $dark-green;
   background-color: $beige;
   border: 2px solid $beige;
   border-radius: 4px;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.shared_links a {
+  text-decoration: none;
+  // border: orangered solid 1px;
+  color: $beige;
 }

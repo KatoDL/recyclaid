@@ -4,7 +4,7 @@
       <%= form_tag materials_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "searchbar",
           placeholder: "Find a material"
         %>
         <%# <%= submit_tag "Search", class: "btn btn-primary" %>
