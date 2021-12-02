@@ -42,9 +42,24 @@ ul {
 }
 
 .correct-spacing {
+  display: flex;
+  justify-content: center;
   p {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+.profile_link {
+  padding: 10px;
+  a {
+    color: $beige;
+    text-decoration: none;
+    opacity: 0.8;
+    &:hover {
+      color: $beige;
+      opacity: 1;
+    }
   }
 }
 
