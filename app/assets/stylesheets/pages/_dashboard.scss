@@ -25,10 +25,7 @@
 }
 
 .dashboard-user-infos{
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  align-items: flex-start;
+  width: 700px;
 } p {
   padding-top: 10px;
 }
@@ -37,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 50px;
-  border: 1px solid $beige;
+  border-top: 1px solid $beige;
 }
 
 .dashboard-card a {
