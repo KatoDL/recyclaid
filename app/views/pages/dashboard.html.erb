@@ -57,8 +57,10 @@
 
     <div class="title-arrow">
       <h5>Sales to be confirmed</h5>
-        <% unless @buyings_of_your_materials.empty? %>
-          <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
+       <% @buyings_of_your_materials.each do |buying| %>
+          <% if buying.status == "pending" %>
+            <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
+          <% end %>
         <% end %>
     </div>
       <% unless @buyings_of_your_materials.empty? %>
