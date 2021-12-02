@@ -4,16 +4,11 @@ body {
   margin: 0px;
 }
 
-// .top {
-//   // background-image: asset-url('bottom.jpg');
-//   background-color: $light-green;
-//   background-position: center;
-//   background-size: cover;
-//   // padding: 40px;
-//   // border-radius: 40px;
-//   height: 350px;
-//   opacity: 0.9;
-// }
+.container-home {
+  // display: flex;
+  // justify-content: flex-end;
+  background-color: $beige;
+}
 
 .full {
   background-image: asset-url('full.jpg');
@@ -21,6 +16,7 @@ body {
   background-size: cover;
   height: 1500px;
   opacity: 0.9;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content:space-around;
@@ -36,43 +32,62 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px 40px;
-  background-color: $light-green;
+  background-color: $dark-brown;
   opacity: 0.8;
+  h2 {
+    color: $beige;
+  }
   // border-radius: 20px;
+}
+
+.recyclaid-about {
+  padding: 20px 40px;
+  background-color: $dark-brown;
+  opacity: 0.8;
+  width: 60%;
+  p {
+    color: $beige;
+  }
+  h2 {
+    color: $beige;
+  }
+  h4 {
+    color: $beige;
+  }
 }
 
 .home-title {
   color: $beige;
 }
 
-// h1 {
-//   color: $dark-green;
-// }
-
-// h2 {
-//   color: $light-green;
-// }
-
-// h5 {
-//   color: $dark-brown;
-// }
-
-// p {
-//   color: $dark-brown;
-// }
+.button-home a {
+  background-color: $beige;
+  color: $dark-green;
+  opacity: 0.7;
+  padding: 7px;
+  border: 5px solid $dark-green;
+  margin-top: 2px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 20px;
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
 
 #section04 a {
   padding-top: 60px;
 }
 #section04 a span {
   position: absolute;
-  top: 0;
+  top: 80%;
   left: 50%;
   width: 24px;
   height: 24px;
   margin-left: -12px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-left: 3px solid $beige;
+  border-bottom: 3px solid $beige;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   -webkit-animation: sdb04 2s infinite;
