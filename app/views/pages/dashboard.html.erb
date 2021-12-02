@@ -60,10 +60,8 @@
         </div>
 
       <div class="title-arrow">
-        <% if @buyings.first %>
-          <% if @buyings.first.status == "pending" %>
-            <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
-          <% end %>
+        <% if @buyings.first.status == "pending" %>
+          <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
         <h5>Sales to be confirmed</h5>
       </div>
@@ -117,10 +115,8 @@
 
 
       <div class="title-arrow">
-        <% if @buyings.first %>
-          <% if @buyings.first.status == "confirmed" %>
-            <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
-          <% end %>
+        <% if @buyings.first && @buyings.first.status == "confirmed"%>
+          <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
         <h5>Your previous buyings</h5>
       </div>
@@ -136,10 +132,8 @@
         <% end %>
 
       <div class="title-arrow">
-        <% if @buyings.first %>
-          <% if @buyings.first.status == "paid" %>
-            <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
-          <% end %>
+        <% if @buyings.first && @buyings.first.status == "paid" %>
+          <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
         <h5>Your paid buyings</h5>
       </div>
