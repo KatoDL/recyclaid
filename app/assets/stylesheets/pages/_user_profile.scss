@@ -1,7 +1,7 @@
 .general-container {
   display: flex;
   width: 1200px;
-  margin: 60px auto;
+  margin: 20px auto;
   padding: 40px;
   background-color: $dark-brown;
   opacity: 0.8;
@@ -11,21 +11,49 @@
 }
 
 .info-container {
-  width: 35%;
-  height: 500px;
-  padding-top: 20px;
+  width: 40%;
+  height: 100%;
+  padding: 20px;
   text-align: center;
-  margin-bottom: 120px;
-  // background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  h1, h5, .review {
+    padding: 10px;
+  }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
 }
 
 .itemsforsale {
-  padding-top: 40px;
+  padding: 20px;
+  h3, hr {
+    color: $beige;
+  }
+}
+
+.card-container {
+  display: flex;
+  box-shadow:  0 0 1em rgba(0, 0, 0, .2);
+  margin-bottom: 15px;
+  background-color:#EDE0D4;
+  border-radius: 4px;
+  h3{
+    color: $dark-brown;
+    padding-left: 5px;
+  }
+}
+
+.profilepicture {
+  padding: 10px;
 }
 
 .user-profile-avatar {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid $beige;
@@ -38,16 +66,24 @@
   color: $dark-brown;
 }
 
-.review_rating {
+.review-show {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
 .fa-star {
   // display: flex;
   color: #EDB867;
+  padding: 2px;
 }
 
 .stars-list {

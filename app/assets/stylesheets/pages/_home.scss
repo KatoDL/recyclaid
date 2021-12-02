@@ -27,6 +27,7 @@ body {
 }
 
 .infos {
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,10 +35,12 @@ body {
   padding: 20px 40px;
   background-color: $dark-brown;
   opacity: 0.8;
+  border-radius: 6px;
   h2 {
     color: $beige;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
-  // border-radius: 20px;
 }
 
 .recyclaid-about {
@@ -60,21 +63,21 @@ body {
   color: $beige;
 }
 
-.button-home a {
-  background-color: $beige;
-  color: $dark-green;
-  opacity: 0.7;
-  padding: 7px;
-  border: 5px solid $dark-green;
-  margin-top: 2px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 20px;
-  &:hover {
-    text-decoration: none;
-    opacity: 1;
-  }
-}
+// .button-home a {
+//   background-color: $beige;
+//   color: $dark-green;
+//   opacity: 0.7;
+//   padding: 7px;
+//   border: 5px solid $dark-green;
+//   margin-top: 2px;
+//   border-radius: 4px;
+//   text-decoration: none;
+//   font-size: 20px;
+//   &:hover {
+//     text-decoration: none;
+//     opacity: 1;
+//   }
+// }
 
 #section04 a {
   padding-top: 60px;

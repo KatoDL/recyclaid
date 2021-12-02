@@ -12,26 +12,28 @@
     </div>
     <div class="cards-container-index">
       <% @materials.each do |material| %>
-        <% if material.available %>
-          <div class="card-container-index">
-            <div class="card-index-images">
-              <% if material.photos.attached? %>
-                <% material.photos.each do |photo| %>
-                  <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+      <%= link_to material_path(material) do %>
+          <% if material.available %>
+            <div class="card-container-index">
+              <div class="card-index-images">
+                <% if material.photos.attached? %>
+                  <% material.photos.first(1).each do |photo| %>
+                    <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <div class="card-index-infos">
-              <div class="name-description">
-                <h3><%= link_to material.name, material_path(material) %></h3>
-                <p><%= material.description %></p>
               </div>
-              <div class="icons">
-                <p><%= humanized_money_with_symbol(material.price) %></p>
-                <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+              <div class="card-index-infos">
+                <div class="name-description">
+                  <h3><%= link_to material.name, material_path(material) %></h3>
+                  <p><%= material.description %></p>
+                </div>
+                <div class="icons">
+                  <p><%= humanized_money_with_symbol(material.price) %></p>
+                  <p><i class="fas fa-map-marker-alt"></i> <%= material.location %></p>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
