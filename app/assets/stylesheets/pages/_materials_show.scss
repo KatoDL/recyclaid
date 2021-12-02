@@ -28,6 +28,13 @@
   margin-left: 20px;
 }
 
+.interactions {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 ul {
   padding: 0;
 }
@@ -43,6 +50,7 @@ ul {
 
 .correct-spacing {
   margin-top: 70px;
+  margin-bottom: 10px;
   padding-top: 10px;
   display: flex;
   // justify-content: space-between;
