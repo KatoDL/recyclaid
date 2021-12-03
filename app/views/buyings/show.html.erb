@@ -34,7 +34,7 @@
       </div>
       <div class="practical-info">
         <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
-        <p><%= @material.price %> <i class="fas fa-euro-sign"></i></p>
+        <p><%= humanized_money_with_symbol(@material.price) %></p>
       </div>
       <p> <em> <%= @buying.material.description  %> </em></p>
     </div>
