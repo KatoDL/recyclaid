@@ -10,7 +10,7 @@
       <div class="dashboard-user-infos">
         <h1><%= @user.name %></h1>
         <em><h5>"<%= @user.description %>"</h5></em>
-        <p class="new-material-button"><%= link_to "Create a new offer", new_material_path %></p>
+        <p class="new-material-button"><%= link_to "Share materials", new_material_path %></p>
       </div>
   </div>
 
@@ -19,7 +19,7 @@
       <% unless @user.materials.where(available: true).empty? %>
         <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
       <% end %>
-      <h5>Your items </h5>
+      <h5>My materials </h5>
     </div>
     <% unless @user.materials.where(available: true).empty? %>
       <div class="dashboard-cards d-none" data-dashboard-target="cards">
@@ -40,7 +40,7 @@
             <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
           <% end %>
         <% end %>
-        <h5>Your interests</h5>
+        <h5>My interests</h5>
       </div>
         <div class="dashboard-cards d-none" data-dashboard-target="cards2">
           <% @buyings.each do |buying| %>
@@ -69,7 +69,7 @@
             <% end %>
           <% end %>
         <% end %>
-        <h5>Sales to be confirmed</h5>
+        <h5>Pending sales</h5>
       </div>
         <% unless @buyings_of_your_materials.empty? %>
           <div class="dashboard-cards d-none" data-dashboard-target="cards3">
@@ -124,7 +124,7 @@
         <% if @buyings.first && @buyings.first.status == "confirmed"%>
           <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
-        <h5>Your previous buyings</h5>
+        <h5>Orders</h5>
       </div>
         <% @buyings.each do |buying| %>
           <% if buying.status == "confirmed" %>
@@ -141,7 +141,7 @@
         <% if @buyings.first && @buyings.first.status == "paid" %>
           <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
-        <h5>Your paid buyings</h5>
+        <h5>Purchases</h5>
       </div>
       <% @buyings.each do |buying| %>
         <% if buying.status == "paid" %>
