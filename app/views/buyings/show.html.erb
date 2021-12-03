@@ -44,11 +44,11 @@
           <%= form_tag orders_path do %>
             <%= hidden_field_tag 'material_id', @material.id %>
             <%= hidden_field_tag 'buying_id', @buying.id %>
-            <%= submit_tag 'confirm purchase', class: 'purchase-pay-button' %>
+            <%= submit_tag 'confirm purchase', class: 'purchase-button' %>
           <% end %>
         <% else %>
           <% if @order && @order.state == 'pending' %>
-            <button id="pay" class="purchase-pay-button">Pay</button>
+            <button id="pay" class="pay-button">Pay</button>
             <script src="https://js.stripe.com/v3/"></script>
             <script>
               const paymentButton = document.getElementById('pay');

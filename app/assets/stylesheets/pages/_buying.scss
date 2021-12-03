@@ -99,7 +99,24 @@ p {
   margin-bottom: 10px;
 }
 
-.purchase-pay-button {
+.purchase-button {
+  background-color: $beige;
+  font-weight: 700;
+  height: 40px;
+  width: 200px;
+  color: $dark-green;
+  opacity: 1;
+  padding: 7px;
+  border: 3px solid $beige;
+  border-radius: 4px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.7;
+  }
+}
+
+.pay-button {
   background-color: $beige;
   font-weight: 700;
   height: 40px;
