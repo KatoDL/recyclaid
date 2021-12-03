@@ -95,6 +95,18 @@
           </ul>
         <% end %>
       </div>
+      <div class="correct-spacing">
+              <div class="profile_link">
+                <% if @material.user.photo.attached? %>
+                  <%= link_to user_path(@material.user_id) do %>
+                    <%= cl_image_tag @material.user.photo.key, class: "avatar" %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag "no-profile-picture-jpg-hd-png-download.png", class: "avatar" %>
+                <% end %>
+              </div>
+              <p>Contact <%= @material.user.name %></p>
+      </div>
       <div class="message">
         <div class = "message-box">
           <div class="card">
