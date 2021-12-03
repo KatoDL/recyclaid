@@ -26,8 +26,8 @@
 
 .dashboard-user-infos{
   width: 700px;
-} p {
-  padding-top: 10px;
+} h5 {
+  padding: 10px 0;
 }
 
 .dashboard-card {
@@ -62,20 +62,20 @@
 }
 
 .new-material-button a {
-  background-color: $beige;
   font-weight: 700;
   font-size: 20px;
   height: 60px;
   width: 320px;
-  color: $dark-brown;
-  opacity: 0.7;
-  padding: 10px;
-  border: 3px solid $beige;
+  padding: 10px 50px;
+  margin-top: 10px;
+  color: #EDE0D4;
+  background-color: $light-brown;
+  border: 3px solid #EDE0D4;
   border-radius: 4px;
   text-decoration: none;
-  &:hover {
+    &:hover {
+    background-color: $dark-brown;
     text-decoration: none;
-    opacity: 1;
   }
 }
 
