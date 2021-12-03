@@ -61,9 +61,11 @@
 
       <div class="title-arrow">
         <% unless @buyings_of_your_materials.empty? %>
-          <% if @buyings_of_your_materials.first %>
-            <% if @buyings_of_your_materials.first.status == "pending" %>
-              <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
+          <% @buyings_of_your_materials.each do |buying| %>
+              <% if buying.status == "pending" %>
+                <% 1.times do %>
+                  <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
+                <% end %>
             <% end %>
           <% end %>
         <% end %>
