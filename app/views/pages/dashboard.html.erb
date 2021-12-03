@@ -132,22 +132,23 @@
         </div>
 
       <div class="title-arrow">
-        <% if @buyings.first && @buyings.first.status == "paid" %>
+        <% if @buyings.map(&:status).include?("paid") %>
           <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
         <h5>Purchases</h5>
       </div>
-      <% @buyings.each do |buying| %>
-        <% if buying.status == "paid" %>
-          <div class="dashboard-cards d-none" data-dashboard-target="cards6">
-            <div class="dashboard-card">
-              <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-              <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+      <div class="d-none">
+        <% @buyings.each do |buying| %>
+          <% if buying.status == "paid" %>
+            <div class="dashboard-cards" data-dashboard-target="cards6">
+              <div class="dashboard-card">
+                <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+                <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-
+      </div>
   </div>
 
 
