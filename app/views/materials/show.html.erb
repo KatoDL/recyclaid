@@ -40,7 +40,7 @@
         <div class="interactions">
           <div class="interested">
             <%= simple_form_for [@material, @buying] do |f| %>
-              <%= f.hidden_field :message, input_html:{class:"input_text"}, placeholder:"Message", label: false, value: "Hi, I'm intersted in your product!" %>
+              <%= f.hidden_field :message, input_html:{class:"input_text"}, placeholder:"Message", label: false, value: "Hi, I'm interested in your product!" %>
               <%= f.hidden_field :status, value: "pending" %>
               <%= f.submit "I'm interested!", class:"btn_interest" %>
               <% end %>
