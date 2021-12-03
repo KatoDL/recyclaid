@@ -12,9 +12,9 @@ Material.destroy_all
 User.destroy_all
 
 puts "Creating materials..."
-user1 = User.create!({ email: "Quynh-Anh@lewagon.be", password: "recyclaid", name: "Quynh-Anh", description: "My windows are the best, don't even consider buying from someone else." })
-user2 = User.create!({ email: "kato@lewagon.be", password: "recyclaid", name: "Kato", description: "The wood I provide is always fresh from the day, I chop it myself :)" })
-user3 = User.create!({ email: "dorian@lewagon.be", password: "recyclaid", name: "Dorian", description: "I am a true sand lover !" })
+user1 = User.create!({ email: "Quynh-Anh@lewagon.be", password: "recyclaid", name: "Quynh-Anh", description: "I am currently making big changes in my bathroom, I have a lot of products that are still in great condition! Don't hesitate to contact me for more information about anything." })
+user2 = User.create!({ email: "kato@lewagon.be", password: "recyclaid", name: "Kato", description: "I am a passionate woodworker, I can provide raw materials but also nice and clean finished products." })
+user3 = User.create!({ email: "dorian@lewagon.be", password: "recyclaid", name: "Dorian", description: "I have various material leftovers because I am building a new house." })
 
 wood1 = 'https://images.pexels.com/photos/2685611/pexels-photo-2685611.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
 wood2 = 'https://images.pexels.com/photos/1817017/pexels-photo-1817017.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
