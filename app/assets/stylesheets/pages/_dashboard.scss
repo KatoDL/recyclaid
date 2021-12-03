@@ -61,6 +61,24 @@
   }
 }
 
+.new-material-button a {
+  background-color: $beige;
+  font-weight: 700;
+  font-size: 20px;
+  height: 60px;
+  width: 320px;
+  color: $dark-brown;
+  opacity: 0.7;
+  padding: 10px;
+  border: 3px solid $beige;
+  border-radius: 4px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
 .dashboard-title {
   cursor: default;
 }
@@ -68,8 +86,8 @@
 .confirm_delete_button {
   background-color: $beige;
   font-weight: 700;
-  height: 60px;
-  width: 320px;
+  height: 40px;
+  width: 100px;
   color: $dark-brown;
   opacity: 0.7;
   padding: 7px;

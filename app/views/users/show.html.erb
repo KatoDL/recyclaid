@@ -62,9 +62,25 @@
               <div class="card-container">
                 <div class="card-index-images">
                   <% if material.photos.attached? %>
-                    <% material.photos.each do |photo| %>
-                      <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-                    <% end %>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                      <!-- Carousel items -->
+                      <div class="carousel-inner">
+                        <% material.photos.each_with_index do |photo, i| %>
+                        <div class="carousel-item <%= 'active' if i.zero? %> ">
+                          <%= cl_image_tag photo.key, class:"carousel-img" %>
+                        </div>
+                        <% end %>
+                      </div>
+                        <!-- Carousel nav -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
                   <% end %>
                 </div>
                 <div class="card-index-infos">
@@ -89,12 +105,28 @@
           <hr>
           <% @user.materials.each do |material| %>
             <% if !material.available %>
-              <div class="card-container-index">
+              <div class="card-container">
                 <div class="card-index-images">
                   <% if material.photos.attached? %>
-                    <% material.photos.each do |photo| %>
-                      <div class='material-img' style="background-image: url('<%= cl_image_path photo.key %>')"></div>
-                    <% end %>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                      <!-- Carousel items -->
+                      <div class="carousel-inner">
+                        <% material.photos.each_with_index do |photo, i| %>
+                        <div class="carousel-item <%= 'active' if i.zero? %> ">
+                          <%= cl_image_tag photo.key, class:"carousel-img" %>
+                        </div>
+                        <% end %>
+                      </div>
+                        <!-- Carousel nav -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
                   <% end %>
                 </div>
                 <div class="card-index-infos">
