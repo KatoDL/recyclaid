@@ -42,20 +42,16 @@
 }
 
 .btn_home a {
-  margin: 10px;
-  padding: 15px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 20px;
-  height: 60px;
-  color: $beige;
-  background-color: #66442E;
-  border: 3px solid $beige;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  color: $dark-green;
+  background-color: $beige;
+  border: 2px solid $beige;
   border-radius: 4px;
   &:hover {
-    color: $beige;
-    background-color: $dark-brown;
-    text-decoration: none;
-    opacity: 1;
+    opacity: 0.8;
   }
 }
