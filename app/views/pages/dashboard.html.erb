@@ -35,11 +35,9 @@
     <% end %>
 
       <div class="title-arrow">
-        <% if @buyings.first %>
-          <% if @buyings.first.status == "pending" || @buyings.first.status == "declined" %>
+        <% if @buyings.map(&:status).include?("pending") || @buyings.map(&:status).include?("declined") %>
             <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
           <% end %>
-        <% end %>
         <h5>My interests</h5>
       </div>
         <div class="dashboard-cards d-none" data-dashboard-target="cards2">
@@ -61,12 +59,8 @@
 
       <div class="title-arrow">
         <% unless @buyings_of_your_materials.empty? %>
-          <% @buyings_of_your_materials.each do |buying| %>
-              <% if buying.status == "pending" %>
-                <% 1.times do %>
-                  <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
-                <% end %>
-            <% end %>
+          <% if @buyings_of_your_materials.map(&:status).include?("pending") %>
+            <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
           <% end %>
         <% end %>
         <h5>Pending sales</h5>
@@ -121,21 +115,21 @@
 
 
       <div class="title-arrow">
-        <% if @buyings.first && @buyings.first.status == "confirmed"%>
+        <% if @buyings.map(&:status).include?("confirmed")%>
           <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
         <% end %>
         <h5>Orders</h5>
       </div>
-        <% @buyings.each do |buying| %>
-          <% if buying.status == "confirmed" %>
-            <div class="dashboard-cards d-none" data-dashboard-target="cards5">
-              <div class="dashboard-card">
-                <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
-                <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+      <div class="d-none">
+        <% @buyings.select{|by|  by.status == "confirmed"}.each do |buying| %>
+              <div class="dashboard-cards" data-dashboard-target="cards5">
+                <div class="dashboard-card">
+                  <span><%= link_to "#{buying.material.name}", material_buying_path(buying.material, buying) %></span>
+                  <span class="dashboard-button"><%= link_to "Rate the seller", user_path(buying.material.user) %></span>
+                </div>
               </div>
-            </div>
           <% end %>
-        <% end %>
+        </div>
 
       <div class="title-arrow">
         <% if @buyings.first && @buyings.first.status == "paid" %>
