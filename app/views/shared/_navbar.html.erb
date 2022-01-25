@@ -1,11 +1,11 @@
-<div class="navbar">
-  <ul>
-    <li class="fullwidth>
+<div class="navbar-container">
+  <nav class="navbar">
+    <div class="nav-img">
       <%= link_to root_path do %>
         <%= image_tag "logo Recyclaid-green.png", class:"nav-img" %>
       <% end %>
-    </li>
-    <%# <div class="quick-access"> %>
+    </div>
+    <ul class="quick-access">
       <% if user_signed_in? %>
         <%# <div class="word-links"> %>
           <li class="nav-item">
@@ -35,6 +35,8 @@
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
-    <%# </div> %>
-  </ul>
+    </ul>
+  </nav>
 </div>
+
+<%# class:"nav-img" %>
