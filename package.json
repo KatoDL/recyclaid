@@ -16,16 +16,8 @@
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
-  "engines": {
-    "node": "14.x",
-    "yarn": "1.x"
-  },
   "devDependencies": {
     "@webpack-cli/serve": "^1.6.0",
     "webpack-dev-server": "^4.6.0"
-  },
-
-  "scripts": {
-   "start": "node index.js"
   }
 }
