@@ -9,23 +9,18 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
-  // padding-left: 50px;
-  // padding-right: 50px;
-  // padding-top: 5px;
-  // padding-bottom: 5px;
 }
 
 .nav-img {
   height: 60px;
   width: auto;
-  justify-self: start;
-  margin-left: 20px;
 }
 
 .navbar ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  align-items: center;
   justify-self: end;
 }
 
@@ -72,35 +67,50 @@
 }
 
 @media (min-width: 1250px) {
-
+  .nav-img {
+    justify-self: start;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 1250px) {
-
+  .nav-img {
+    justify-self: start;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
+  .nav-img {
+    justify-self: start;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
-
+  .nav-img {
+    justify-self: start;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
+  .navbar {
+    grid-template-columns: 5fr;
+  }
+  .nav-img{
+    justify-self: center;
+    margin-right: 20px;
+  }
   .navbar  ul {
     display: flex;
     flex-direction: column;
-    position: fixed;
     justify-content: start;
-    top: 70px;
+    top: 55px;
     width: 100%;
-    height: calc(100vh - 55px);
     text-align: center;
-  }
-  .nav-img {
-    justify-self: center;
   }
 }
