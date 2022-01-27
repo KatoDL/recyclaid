@@ -14,7 +14,7 @@ body {
   background-image: asset-url('full.jpg');
   background-position:center;
   background-size: cover;
-  height: 1500px;
+  height: 100vh;
   opacity: 0.9;
   z-index: 1;
   display: flex;
@@ -27,11 +27,13 @@ body {
 }
 
 .infos {
-  height: 200px;
+  display:inline-block;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 200px;
   padding: 20px 40px;
   background-color: $dark-brown;
   opacity: 0.8;
@@ -40,6 +42,7 @@ body {
     color: $beige;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    text-align: center;
   }
 }
 
@@ -64,6 +67,8 @@ body {
 }
 
 .button-home a {
+  display:inline-block;
+  min-width: 200px;
   background-color: $dark-brown;
   color: $beige;
   opacity: 0.7;
@@ -72,7 +77,6 @@ body {
   margin-top: 2px;
   border-radius: 4px;
   text-decoration: none;
-  font-size: 20px;
   &:hover {
     text-decoration: none;
     opacity: 1;
@@ -82,9 +86,9 @@ body {
 #section04 a {
   padding-top: 60px;
 }
+
 #section04 a span {
   position: absolute;
-  top: 80%;
   left: 50%;
   width: 24px;
   height: 24px;
@@ -117,5 +121,41 @@ body {
   }
   40% {
     transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+@media (min-width: 1250px) {
+  .full {
+    height: 1500px;
+  }
+  .button-home a {
+    font-size: 20px;
+  }
+  #section04 a span {
+    top: 90%;
+  }
+}
+
+@media (max-width: 720px) {
+  .button-home a {
+    font-size: 20px;
+  }
+  #section04 a span {
+    top: 90%;
+  }
+}
+
+@media (max-width: 540px) {
+  .infos {
+    padding: 20px 10px;
+    h2 {
+      font-size: calc(1rem + 0.9vw);
+    }
+  }
+  .btn_home a {
+    font-size: 14px;
+  }
+  #section04 a span {
+    top: 80%;
   }
 }
