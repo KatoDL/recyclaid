@@ -1,12 +1,11 @@
 .footer {
   background: $beige;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 80px;
   padding: 0px 50px;
   // margin-top: 40px;
   color: $dark-green;
+  width: 100%;
+  display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -30,7 +29,21 @@
   opacity: 1;
 }
 
+
+@media (min-width: 1250px) {
+  .footer-copyright{
+    text-align: end;
+  }
+}
+
+@media (max-width: 1250px) {
+  .footer-copyright{
+    text-align: end;
+  }
+}
+
 @media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
   .footer {
     display: flex;
     flex-direction: column;
