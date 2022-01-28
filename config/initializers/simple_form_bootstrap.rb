@@ -109,7 +109,7 @@ SimpleForm.setup do |config|
     b.use :label
     b.use :input, class: 'form-control-file', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+    b.use :hint, wrap_with: { tag: 'x-small', class: 'form-text text-muted' }
   end
 
   # vertical multi select

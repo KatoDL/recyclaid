@@ -1,5 +1,5 @@
 .form {
-  width: 500px;
+  width: 80%;
   background-color: $dark-green;
   padding: 40px;
   margin: 60px auto;
@@ -60,4 +60,15 @@
   text-decoration: none;
   // border: orangered solid 1px;
   color: $beige;
+}
+
+.file_wrap{
+  color: transparent;
+  overflow: hidden;
+}
+
+@media (min-width: 720px) {
+  .form {
+    width: 33%;
+  }
 }
