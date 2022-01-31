@@ -15,7 +15,7 @@
 }
 
 .form_img {
-  width: 420px;
+  width: 100%;
   height: 260px;
   object-fit: cover;
   border-radius: 4px;
@@ -62,13 +62,26 @@
   color: $beige;
 }
 
-.file_wrap{
-  color: transparent;
-  overflow: hidden;
-}
+//Media Queries//
 
-@media (min-width: 720px) {
+@media (min-width: 950px) {
   .form {
     width: 33%;
+  }
+}
+
+@media (max-width: 950px) {
+  .form {
+    width: 55%;
+  }
+}
+
+@media (max-width: 750px) {
+  .form {
+    width: 80%;
+  }
+  .file_wrap{
+    color: transparent;
+    overflow: hidden;
   }
 }
