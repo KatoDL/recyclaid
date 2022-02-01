@@ -1,5 +1,12 @@
+a {
+  text-decoration: none;
+  color: $beige;
+  &:hover {
+    opacity: 0.8;
+  }
+}
 .form {
-  width: 500px;
+  width: 80%;
   background-color: $dark-green;
   padding: 40px;
   margin: 60px auto;
@@ -15,7 +22,7 @@
 }
 
 .form_img {
-  width: 420px;
+  width: 100%;
   height: 260px;
   object-fit: cover;
   border-radius: 4px;
@@ -60,4 +67,49 @@
   text-decoration: none;
   // border: orangered solid 1px;
   color: $beige;
+}
+
+.text-muted {
+  color: $beige!important;
+  opacity: 0.4;
+}
+
+.form-control.is-valid {
+  border-color : $beige;
+}
+
+#unhappy {
+  display: flex;
+  padding: 20px 0;
+  a {
+    padding: 0 5px;
+  }
+}
+
+
+//Media Queries//
+
+@media (min-width: 950px) {
+  .form {
+    width: 33%;
+  }
+}
+
+@media (max-width: 950px) {
+  .form {
+    width: 55%;
+  }
+}
+
+@media (max-width: 750px) {
+  .form {
+    width: 80%;
+  }
+  .file_wrap{
+    color: transparent;
+    overflow: hidden;
+  }
+  #unhappy {
+  font-size: small;
+  }
 }

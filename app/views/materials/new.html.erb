@@ -8,9 +8,11 @@
       <%= f.input :name, input_html:{class:"input_text"}, placeholder:"Name", label: false %>
       <%= f.input :description, input_html:{class:"input_text"}, placeholder:"Description of your product", label: false %>
       <%= f.input :location, input_html:{class:"input_text"}, placeholder:"Address", label: false %>
-      <%= f.input :price_cents, as: :text, input_html:{class:"input_text" ,value: nil}, placeholder:"Price in €", label: false %>
+      <%= f.input :price_cents, input_html:{class:"input_text" ,value: nil}, placeholder:"Price in €", label: false %>
       <br>
-      <%= f.input :photos, as: :file, input_html:{multiple: true}, label: false %>
+      <div class="file_wrap">
+        <%= f.input :photos, as: :file, input_html:{multiple: true}, label: false %>
+      </div>
       <br>
       <%= f.submit "Submit", class:"submit_button" %>
     <% end %>
