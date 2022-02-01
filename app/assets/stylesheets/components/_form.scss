@@ -1,3 +1,10 @@
+a {
+  text-decoration: none;
+  color: $beige;
+  &:hover {
+    opacity: 0.8;
+  }
+}
 .form {
   width: 80%;
   background-color: $dark-green;
@@ -62,6 +69,24 @@
   color: $beige;
 }
 
+.text-muted {
+  color: $beige!important;
+  opacity: 0.4;
+}
+
+.form-control.is-valid {
+  border-color : $beige;
+}
+
+#unhappy {
+  display: flex;
+  padding: 20px 0;
+  a {
+    padding: 0 5px;
+  }
+}
+
+
 //Media Queries//
 
 @media (min-width: 950px) {
@@ -83,5 +108,8 @@
   .file_wrap{
     color: transparent;
     overflow: hidden;
+  }
+  #unhappy {
+  font-size: small;
   }
 }
