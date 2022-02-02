@@ -1,6 +1,6 @@
 .cards-container-index {
   margin-left: 15px;
-  width: 700px;
+  width: 100%;
 }
 
 .card-container-index {
@@ -33,4 +33,6 @@
 
 .card-index-images {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
 }

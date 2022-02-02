@@ -1,8 +1,6 @@
 .search-bar-container {
   margin: 10px;
-  width: 700px;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
 .searchbar {
@@ -12,12 +10,22 @@
   border: gray solid 1px;
 }
 
-.card-index-images {
-  min-height: 18rem;
-}
 #map {
   margin-top: 30px;
   margin-right: 0px;
   position: sticky;
   top: 0;
+}
+
+@media (min-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .material-img{
+    width: 350px;
+  }
+}
+
+@media (max-width: 540px) {
+  .material-img{
+    width: 150px;
+  }
 }
