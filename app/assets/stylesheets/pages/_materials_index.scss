@@ -1,11 +1,14 @@
+.row {
+  --bs-gutter-x: 0.5rem;
+}
+
 .search-bar-container {
-  margin: 10px;
-  padding: 20px 0;
+  padding: 30px 0px 20px 0;
 }
 
 .searchbar {
   width: 100%;
-  margin-left: 8px;
+  //margin-left: 8px;
   border-radius: 4px;
   border: gray solid 1px;
 }
@@ -16,11 +19,21 @@
   position: sticky;
   top: 0;
 }
-
-@media (min-width: 720px) {
-  /* For a screen < 720px, this CSS will be read */
+@media (min-width: 900px) {
   .material-img{
     width: 350px;
+  }
+}
+
+@media (min-width: 540px) {
+  .search-bar-container {
+    margin-left: 15px;
+  }
+  .cards-container-index {
+    margin-left: 15px;
+  }
+  .material-img{
+    width: 150px;
   }
 }
 
@@ -28,4 +41,8 @@
   .material-img{
     width: 150px;
   }
+  .card-index-infos p {
+    font-size: smaller;
+  }
+
 }
