@@ -30,10 +30,12 @@
         </div>
       <% end %>
       <div class="practical-info">
-        <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
+        <div>
+          <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
+          <p><em><%= @material.description %></em></p>
+        </div>
         <p><%= humanized_money_with_symbol(@material.price) %></p>
       </div>
-      <p><em><%= @material.description %></em></p>
     </div>
     <div class="material-buying-request">
       <% if @buyings.empty? && current_user != @material.user %>

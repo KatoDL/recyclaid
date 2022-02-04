@@ -2,20 +2,8 @@ ul {
   list-style-type: none;
 }
 
-.material-container{
-  margin: 0 auto;
-  width: 700px;
-  align-items: center;
-
-}
-
-.button a{
-  text-decoration: none;
-  background-color: $dark-green;
-}
-
 .material-container {
-  width: 1200px;
+  width: 83%;         //changed the fixed height from 1200px to 83% to make it responsive//
   margin: 60px auto;
   padding: 40px;
   background-color: $dark-green;
@@ -24,6 +12,12 @@ ul {
   color: $beige;
   box-shadow:  0 0 1em rgba(0, 0, 0, .2);
 }
+
+.button a{
+  text-decoration: none;
+  background-color: $dark-green;
+}
+
 
 .head-show-page {
   align-items: center;
@@ -110,4 +104,10 @@ ul {
   object-fit: cover;
   background-size: cover;
   background-position: center;
+}
+
+//media queries//
+
+@media (max-width: 950px) {
+
 }
