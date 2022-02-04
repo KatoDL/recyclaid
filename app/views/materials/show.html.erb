@@ -9,21 +9,21 @@
   <div class="info-without-title">
     <div class="material-info">
       <% if @material.photos.attached? %>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselMaterialShow" class="carousel slide" data-bs-ride="carousel">
           <!-- Carousel items -->
           <div class="carousel-inner">
             <% @material.photos.each_with_index do |photo, i| %>
             <div class="carousel-item <%= 'active' if i.zero? %> ">
-              <%= cl_image_tag photo.key, class:"carousel-img" %>
+              <%= cl_image_tag photo.key, class:"carousel-img d-block w-100" %>
             </div>
             <% end %>
           </div>
             <!-- Carousel nav -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselMaterialShow" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselMaterialShow" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
