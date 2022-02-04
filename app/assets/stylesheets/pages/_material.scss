@@ -13,6 +13,10 @@ ul {
   box-shadow:  0 0 1em rgba(0, 0, 0, .2);
 }
 
+.form_title h2 {
+  padding: 20px 0 40px 0;
+}
+
 .button a{
   text-decoration: none;
   background-color: $dark-green;
@@ -23,39 +27,14 @@ ul {
   align-items: center;
 }
 
-.info-without-title {
-  display: flex;
-  justify-content: space-between;
-}
-
-.material-info {
-  width: 60%;
-  margin-right: 20px;
-}
-
-.material-buying-request {
-  width: 40%;
-  margin-left: 20px;
-}
-
-.interactions {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 ul {
   padding: 0;
 }
 
 .practical-info {
-  width: 600px;
   display: flex;
-  justify-content: space-between;
-  p {
-    margin: 0;
-  }
+  flex-direction: column;
 }
 
 .correct-spacing {
@@ -63,7 +42,6 @@ ul {
   margin-bottom: 10px;
   padding-top: 10px;
   display: flex;
-  // justify-content: space-between;
   align-items: center;
   p {
     margin: 0;
@@ -82,7 +60,78 @@ ul {
 }
 
 //media queries//
+@media (min-width: 576px) {
+  .info-without-title {
+    display: flex;
+    justify-content: space-between;
+  }
 
-@media (max-width: 950px) {
+  .material-info {
+    width: 60%;
+    margin-right: 20px;
+  }
 
+  .practical-info {
+    padding-right: 1.5rem;
+  }
+
+  .price-location {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3rem;
+  }
+
+  .material-buying-request {
+    width: 40%;
+    margin-left: 20px;
+  }
+  .interactions {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 576px) {
+  #carouselMaterialShow {
+    margin: auto;
+    width: 60vw;
+  }
+
+  .carousel-inner {
+    width: 60vw;
+    height: 45vh;
+  }
+
+  .carousel-img {
+    object-fit: cover;
+    background-size: cover;
+    object-position: center;
+    width: 60vw;
+    height: 45vh;
+  }
+
+  .practical-info {
+    padding-top: 3vh;
+  }
+
+  .interested {
+    margin-top: 2vh;
+  }
+
+  .btn_interest {
+    font-weight: 700;
+    font-size: 1em;
+    height: 4rem;
+    width: 15rem;
+  }
+
+  .correct-spacing {
+    padding-top: 2vh;
+  }
+
+  #map {
+    display: none;
+  }
 }

@@ -4,7 +4,6 @@
 <div class="material-container">
   <div class="form_title">
     <h2><%= @material.name %></h2>
-    <br>
   </div>
   <div class="info-without-title">
     <div class="material-info">
@@ -30,11 +29,11 @@
         </div>
       <% end %>
       <div class="practical-info">
-        <div>
+        <p><em><%= @material.description %></em></p>
+        <div class="price-location">
           <p><i class="fas fa-map-marker-alt"></i> <%= @material.location %></p>
-          <p><em><%= @material.description %></em></p>
+          <p><%= humanized_money_with_symbol(@material.price) %></p>
         </div>
-        <p><%= humanized_money_with_symbol(@material.price) %></p>
       </div>
     </div>
     <div class="material-buying-request">
