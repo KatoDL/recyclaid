@@ -8,8 +8,8 @@
         <% end %>
       </div>
       <div class="dashboard-user-infos">
-        <h1><%= @user.name %></h1>
-        <em><h5>"<%= @user.description %>"</h5></em>
+        <h1><%= current_user.name %></h1>
+        <em><h5>"<%= current_user.description %>"</h5></em>
         <p class="new-material-button"><%= link_to "Share materials", new_material_path %></p>
       </div>
   </div>
