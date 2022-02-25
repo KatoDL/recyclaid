@@ -1,5 +1,5 @@
 .dashboard-page-container{
-  width: 1200px;
+  width: 83%;
   margin: 60px auto;
   padding: 40px;
   background-color: $dark-brown;
@@ -25,9 +25,10 @@
 }
 
 .dashboard-user-infos{
-  width: 700px;
-} h5 {
+  width: 60%;
+  h5 {
   padding: 10px 0;
+  }
 }
 
 .dashboard-card {
@@ -61,21 +62,24 @@
   }
 }
 
-.new-material-button a {
-  font-weight: 700;
-  font-size: 20px;
-  height: 60px;
-  width: 320px;
-  padding: 10px 50px;
-  margin-top: 10px;
-  color: #EDE0D4;
-  background-color: $light-brown;
-  border: 3px solid #EDE0D4;
-  border-radius: 4px;
-  text-decoration: none;
-    &:hover {
-    background-color: $dark-brown;
+.new-material-button {
+  padding: 10px 0;
+  a {
+    font-weight: 700;
+    font-size: 20px;
+    height: 60px;
+    width: 320px;
+    padding: 10px 50px;
+    margin-top: 10px;
+    color: #EDE0D4;
+    background-color: $light-brown;
+    border: 3px solid #EDE0D4;
+    border-radius: 4px;
     text-decoration: none;
+      &:hover {
+      background-color: $dark-brown;
+      text-decoration: none;
+    }
   }
 }
 
@@ -110,5 +114,49 @@
   padding: 5px;
   i {
   padding: 5px;
+  }
 }
+
+@media (max-width: 576px) {
+  .user-dashboard-profile {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .dashboard-user-infos{
+    width: 100%;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .dashboard-card {
+    padding: 10px 5px;
+  }
+
+  .new-material-button a {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .dashboard-button a {
+    font-size: 10px;
+  }
+
+  .buying-validation-buttons{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+  }
+
+  .confirm_delete_button {
+    font-size: 10px;
+    height: 2rem;
+    width: 4.5rem;
+    margin: 2px 0;
+  }
+  .confirm-button {
+    padding-right: 0px;
+  }
 }
