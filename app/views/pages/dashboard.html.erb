@@ -112,8 +112,6 @@
           </div>
         <% end %>
 
-
-
       <div class="title-arrow">
         <% if @buyings.map(&:status).include?("confirmed")%>
           <i class="fas fa-arrow-down" class="dashboard-title" data-dashboard-target="title" data-action="click->dashboard#displayForm"></i>
@@ -150,6 +148,4 @@
         <% end %>
       </div>
   </div>
-
-
 </div>
