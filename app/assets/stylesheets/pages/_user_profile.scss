@@ -1,6 +1,6 @@
 .general-container {
   display: flex;
-  width: 1200px;
+  width: 83%;
   margin: 20px auto;
   padding: 40px;
   background-color: $dark-brown;
@@ -98,4 +98,29 @@
 
 .review-show {
   display: flex;
+}
+
+@media (max-width: 576px) {
+  .general-container {
+    flex-direction: column;
+  }
+
+  .info-container {
+    width: 100%;
+  }
+
+  .card-container{
+    flex-direction: column;
+  }
+
+  .material-img{
+    width: 150px;
+  }
+  .card-index-infos p {
+    font-size: smaller;
+  }
+
+  .solditems {
+    padding: 0px;
+  }
 }
