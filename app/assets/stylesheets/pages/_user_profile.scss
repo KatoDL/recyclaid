@@ -100,6 +100,10 @@
   display: flex;
 }
 
+.carousel-user-profile-inner{
+  width: 40vw;
+}
+
 @media (max-width: 576px) {
   .general-container {
     flex-direction: column;
@@ -111,6 +115,7 @@
 
   .card-container{
     flex-direction: column;
+    width: 60vw;
   }
 
   .material-img{
@@ -120,7 +125,7 @@
     font-size: smaller;
   }
 
-  .solditems {
+  .solditems, .itemsforsale {
     padding: 0px;
   }
 }

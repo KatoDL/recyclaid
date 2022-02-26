@@ -60,23 +60,23 @@
           <%= link_to material_path(material) do %>
             <% if material.available %>
               <div class="card-container">
-                <div class="card-index-images">
+                <div class="card-user-profile-images">
                   <% if material.photos.attached? %>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUserProfile" class="carousel slide" data-bs-ride="carousel">
                       <!-- Carousel items -->
                       <div class="carousel-inner">
                         <% material.photos.each_with_index do |photo, i| %>
-                        <div class="carousel-item <%= 'active' if i.zero? %> ">
-                          <%= cl_image_tag photo.key, class:"carousel-img" %>
+                        <div class="carousel-user-profile-item <%= 'active' if i.zero? %> ">
+                          <%= cl_image_tag photo.key, class:"carousel-user-profile-img" %>
                         </div>
                         <% end %>
                       </div>
                         <!-- Carousel nav -->
-                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselUserProfile" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                       </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselUserProfile" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                       </button>
@@ -106,23 +106,23 @@
           <% @user.materials.each do |material| %>
             <% if !material.available %>
               <div class="card-container">
-                <div class="card-index-images">
+                <div class="card-user-profile-images">
                   <% if material.photos.attached? %>
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUserProfile" class="carousel slide" data-bs-ride="carousel">
                       <!-- Carousel items -->
                       <div class="carousel-inner">
                         <% material.photos.each_with_index do |photo, i| %>
                         <div class="carousel-item <%= 'active' if i.zero? %> ">
-                          <%= cl_image_tag photo.key, class:"carousel-img" %>
+                          <%= cl_image_tag photo.key, class:"carousel-user-profile-img" %>
                         </div>
                         <% end %>
                       </div>
                         <!-- Carousel nav -->
-                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselUserProfile" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                       </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselUserProfile" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                       </button>
